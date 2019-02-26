@@ -21,6 +21,7 @@ journals = set()
 articles = set()
 
 # Creating relations
+
 writes = []
 
 

@@ -22,5 +22,11 @@ def create_write_rel(tx, author, article) :
 
     print(result)
 
+    
+with driver.session() as session :
+    session.read_transaction(create_write_rel, 'Sara', 'The best students in BDMA')
+
+
+
 with driver.session() as session :
     session.read_transaction(create_write_rel, 'Sara', 'The best students in BDMA')
