@@ -1,4 +1,7 @@
-import json, random
+import json, random, codecs
+
+# Global config variables
+sep_value = ';'
 
 journal_papers_string = open('./journal_papers.json', 'r').read()
 conferences_string = open('./conferences.json', 'r').read()
@@ -52,7 +55,7 @@ for jp in journal_papers_json:
 
     # Creating article
     article_title = journal_paper['title']
-    articles.append(str(articleID) + ',' + article_title + '\n')
+    articles.append(str(articleID) + sep_value + article_title + '\n')
     articleID += 1
 
     # Creating journal
@@ -77,15 +80,15 @@ for jp in journal_papers_json:
             # Writes: Author -> Article
             # adding corresponding author in relationship
             if corresponding == 0:
-                writes.append(author + ', Yes ,' + str(articleID - 1) + '\n')
+                writes.append(sep_value.join([author, 'Yes', str(articleID - 1) + '\n']))
                 corresponding = 1
             else:
-                writes.append(author + ', No ,' + str(articleID-1) + '\n')
+                writes.append(sep_value.join([author, 'No', str(articleID-1) + '\n']))
     else:
         author = journal_authors['author']
         authors.add(author)
         # Writes: Author -> Article
-        writes.append(author + ', Yes ,' + str(articleID - 1) + '\n')
+        writes.append(sep_value.join([author, 'Yes', str(articleID - 1) + '\n']))
 
     # Creating keywords
     if random.randint(0,1) == 1:
@@ -95,7 +98,7 @@ for jp in journal_papers_json:
             keyword = secure_random.choice(keywordsComm)
             keywords.add(keyword+ '\n')
             # Has = article -> keyword
-            has.add(str(articleID) + ',' + keyword + '\n')
+            has.add(sep_value.join([str(articleID), keyword + '\n']))
             numberWords -= 1
     else:
         numberWords = random.randint(1,8)
@@ -104,7 +107,7 @@ for jp in journal_papers_json:
             keyword = secure_random.choice(randomKeywords)
             keywords.add(keyword+ '\n')
             # Has = article -> keyword
-            has.add(str(articleID) + ',' + keyword + '\n')
+            has.add(sep_value.join([str(articleID), keyword + '\n']))
             numberWords -= 1
 
 
@@ -114,13 +117,13 @@ for jp in journal_papers_json:
 
     # Vol_contains: volume -> article
     pages = journal_paper['pages']
-    vol_contains.append(volume + ',' + pages + ',' + str(articleID-1) + '\n')
+    vol_contains.append(sep_value.join([volume, pages, str(articleID-1) + '\n']))
 
     # Publishes: journal -> volume
-    publishes.add(journal + ',' + volume + '\n')
+    publishes.add(sep_value.join([journal, volume + '\n']))
 
     # In_year_vol: volume -> year
-    in_year_vol.add(volume + ',' + year + '\n')
+    in_year_vol.add(sep_value.join([volume, year + '\n']))
 
 
 # CONFERENCES
@@ -132,7 +135,7 @@ for conf in conferences_json:
 
     # Creating articles
     article_title = conf_paper['title']
-    articles.append(str(articleID) + ',' + article_title + '\n')
+    articles.append(sep_value.join([str(articleID), article_title + '\n']))
     articleID += 1
 
     # Creating conferences
@@ -149,10 +152,10 @@ for conf in conferences_json:
         city = secure_random.choice(randomCities)
         cities.add(city + '\n')
         # Occurs_in: edition -> city
-        occurs_in[edition] = edition + ',' + city + '\n'
+        occurs_in[edition] = sep_value.join([edition, city + '\n'])
 
     # Add edition
-    editions[edition] = edition + ',' + str(ed_key) + '\n'
+    editions[edition] = sep_value.join([edition, str(ed_key) + '\n'])
 
     # Creating author
     journal_authors = journal_paper['authors']
@@ -166,15 +169,15 @@ for conf in conferences_json:
             # Writes: Author -> Article
             # adding corresponding author in relationship
             if corresponding == 0:
-                writes.append(author + ', Yes ,' + str(articleID - 1) + '\n')
+                writes.append(sep_value.join([author, 'Yes', str(articleID - 1) + '\n']))
                 corresponding = 1
             else:
-                writes.append(author + ', No ,' + str(articleID-1) + '\n')
+                writes.append(sep_value.join([author, 'No', str(articleID-1) + '\n']))
     else:
         author = journal_authors['author']
         authors.add(author)
         # Writes: Author -> Article
-        writes.append(author + ', Yes ,' + str(articleID - 1) + '\n')
+        writes.append(sep_value.join([author, 'Yes', str(articleID - 1) + '\n']))
 
     # Creating years
     year = conf_paper['year']
@@ -188,7 +191,7 @@ for conf in conferences_json:
             keyword = secure_random.choice(keywordsComm)
             keywords.add(keyword + '\n')
             # Has = article -> keyword
-            has.add(str(articleID)+','+keyword + '\n')
+            has.add(sep_value.join([str(articleID), keyword + '\n']))
             numberWords -= 1
     else:
         numberWords = random.randint(1,8)
@@ -197,23 +200,26 @@ for conf in conferences_json:
             keyword = secure_random.choice(keywordsComm)
             keywords.add(keyword + '\n')
             # Has = article -> keyword
-            has.add(str(articleID) + ',' + keyword + '\n')
+            has.add(sep_value.join([str(articleID), keyword + '\n']))
             numberWords -= 1
 
 # Edges
 
     # Proc_contains: edition -> article
-    proc_contains.append(edition + ',' + pages + ',' + str(articleID-1) + '\n')
+    proc_contains.append(sep_value.join([edition, pages, str(articleID-1) + '\n']))
 
     # Has_an: conference -> edition
-    has_an.add(conference + ',' + edition + '\n')
+    has_an.add(sep_value.join([conference, edition + '\n']))
 
     # In_year_ed
-    in_year_ed.add(edition + ',' + year + '\n')
+    in_year_ed.add(sep_value.join([edition, year + '\n']))
+
+
+
 
 # Creating citations and reviewers
 for article in articles:
-    article_id = article.split(',')[0]
+    article_id = article.split(sep_value)[0]
     numCitation = random.randint(2,10)
     secure_random = random.SystemRandom()
 
@@ -221,102 +227,102 @@ for article in articles:
 
     numReviewers = 3
     while numReviewers > 0:
-        author = str(secure_random.sample(authors,1)[0]).replace('\n', '')
-        wroteYes = author + ', Yes ,' + article_id
-        wroteNo = author + ', No ,' + article_id
+        author = secure_random.sample(authors,1)[0].replace('\n', '')
+        wroteYes = sep_value.join([author, 'Yes', article_id])
+        wroteNo = sep_value.join([author, 'No', article_id])
         if wroteYes not in writes and wroteNo not in writes:
-            reviews.add(author+','+article_id + '\n')
+            reviews.add(sep_value.join([author, article_id + '\n']))
             numReviewers -= 1
 
     # Adding citations
 
     while numCitation > 0:
-        cited = secure_random.choice(articles).split(',')[0]
+        cited = secure_random.choice(articles).split(sep_value)[0]
         if article_id != cited:
-            cites.add(article_id+','+cited + '\n')
+            cites.add(sep_value.join([article_id, cited + '\n']))
             numCitation -= 1
 
 
 # Creating CSVs
 
-with open('./articles.csv', 'w') as f:
-    f.write('articleID:ID(Article),title\n')
+with codecs.open('./articles.csv', 'w', encoding='utf-8') as f:
+    f.write(sep_value.join(['articleID:ID(Article)', 'title\n']))
     f.writelines(articles)
 
-with open('./authors.csv', 'w') as f:
+with codecs.open('./authors.csv', 'w', encoding='utf-8') as f:
     f.write('name:ID(Author)\n')
     f.writelines(authors)
 
-with open('./writes.csv', 'w') as f:
-    f.write(':START_ID(Author),corresponding_author,:END_ID(Article)\n')
+with codecs.open('./writes.csv', 'w', encoding='utf-8') as f:
+    f.write(sep_value.join([':START_ID(Author)', 'corresponding_author', ':END_ID(Article)\n']))
     f.writelines(writes)
 
-with open('./journals.csv', 'w') as f:
-    f.write('journalID:ID(Journal),title\n')
+with codecs.open('./journals.csv', 'w', encoding='utf-8') as f:
+    f.write(sep_value.join(['journalID:ID(Journal)', 'title\n']))
     f.writelines(journals)
 
-with open('./vol_contains.csv', 'w') as f:
-    f.write(':START_ID(Volume),pages,:END_ID(Article)\n')
+with codecs.open('./vol_contains.csv', 'w', encoding='utf-8') as f:
+    f.write(sep_value.join([':START_ID(Volume)', 'pages', ':END_ID(Article)\n']))
     f.writelines(vol_contains)
 
-with open('./volumes.csv', 'w') as f:
+with codecs.open('./volumes.csv', 'w', encoding='utf-8') as f:
     f.write('number:ID(Volume)\n')
     f.writelines(volumes)
 
-with open('./publishes.csv', 'w') as f:
-    f.write(':START_ID(Journal),:END_ID(Volume)\n')
+with codecs.open('./publishes.csv', 'w', encoding='utf-8') as f:
+    f.write(sep_value.join([':START_ID(Journal)', ':END_ID(Volume)\n']))
     f.writelines(publishes)
 
-with open('./in_year_vol.csv', 'w') as f:
-    f.write(':START_ID(Volume),:END_ID(Year)\n')
+with codecs.open('./in_year_vol.csv', 'w', encoding='utf-8') as f:
+    f.write(sep_value.join([':START_ID(Volume)', ':END_ID(Year)\n']))
     f.writelines(in_year_vol)
 
-with open('./years.csv', 'w') as f:
+with codecs.open('./years.csv', 'w', encoding='utf-8') as f:
     f.write('number:ID(Year)\n')
     f.writelines(years)
 
-with open('./conferences.csv', 'w') as f:
+with codecs.open('./conferences.csv', 'w', encoding='utf-8') as f:
     f.write('name:ID(Conference)\n')
     f.writelines(conferences)
 
-with open('./editions.csv', 'w') as f:
-    f.write('proceeding:ID(Edition),number\n')
+with codecs.open('./editions.csv', 'w', encoding='utf-8') as f:
+    f.write(sep_value.join(['proceeding:ID(Edition)', 'number\n']))
     f.writelines(editions.values())
 
-with open('./cities.csv', 'w') as f:
+with codecs.open('./cities.csv', 'w', encoding='utf-8') as f:
     f.write('name:ID(City)\n')
     f.writelines(cities)
 
-with open('./proc_contains.csv', 'w') as f:
-    f.write(':START_ID(Edition),pages,:END_ID(Article)\n')
+with codecs.open('./proc_contains.csv', 'w', encoding='utf-8') as f:
+    f.write(sep_value.join([':START_ID(Edition)', 'pages', ':END_ID(Article)\n']))
     f.writelines(proc_contains)
 
-with open('./has_an.csv', 'w') as f:
-    f.write(':START_ID(Conference),:END_ID(Edition)\n')
+with codecs.open('./has_an.csv', 'w', encoding='utf-8') as f:
+    f.write(sep_value.join([':START_ID(Conference)', ':END_ID(Edition)\n']))
     f.writelines(has_an)
 
-with open('./occurs_in.csv', 'w') as f:
-    f.write(':START_ID(Edition),:END_ID(City)\n')
+with codecs.open('./occurs_in.csv', 'w', encoding='utf-8') as f:
+    f.write(sep_value.join([':START_ID(Edition)', ':END_ID(City)\n']))
     f.writelines(occurs_in.values())
 
-with open('./in_year_ed.csv', 'w') as f:
-    f.write(':START_ID(Edition),:END_ID(Year)\n')
+with codecs.open('./in_year_ed.csv', 'w', encoding='utf-8') as f:
+    f.write(sep_value.join([':START_ID(Edition)', ':END_ID(Year)\n']))
     f.writelines(in_year_ed)
 
-with open('./keywords.csv', 'w') as f:
+with codecs.open('./keywords.csv', 'w', encoding='utf-8') as f:
     f.write('name:ID(Keyword)\n')
     f.writelines(keywords)
 
-with open('./has.csv', 'w') as f:
-    f.write(':START_ID(Article),:END_ID(Keyword)\n')
+with codecs.open('./has.csv', 'w', encoding='utf-8') as f:
+    f.write(sep_value.join([':START_ID(Article)', ':END_ID(Keyword)\n']))
     f.writelines(has)
 
-with open('./cites.csv', 'w') as f:
-    f.write(':START_ID(Article),:END_ID(Articles)\n')
+with codecs.open('./cites.csv', 'w', encoding='utf-8') as f:
+    f.write(sep_value.join([':START_ID(Article)', ':END_ID(Articles)\n']))
     f.writelines(cites)
 
-with open('./reviews.csv', 'w') as f:
-    f.write(':START_ID(Author),:END_ID(Articles)\n')
+with codecs.open('./reviews.csv', 'w', encoding='utf-8') as f:
+    f.write(sep_value.join([':START_ID(Author)', ':END_ID(Articles)\n']))
     f.writelines(reviews)
 
 
