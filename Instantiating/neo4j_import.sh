@@ -5,7 +5,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-neo4j-admin import --mode=csv --database=dblp.db --delimiter "," --id-type string \
+neo4j-admin import --mode=csv --database=dblp.db --delimiter ";" --id-type string \
 --nodes:Author "authors.csv" \
 --nodes:Article "articles.csv" \
 --nodes:City "cities.csv" \
