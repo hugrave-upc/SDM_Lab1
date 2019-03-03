@@ -98,7 +98,7 @@ for jp in journal_papers_json:
             keyword = secure_random.choice(keywordsComm)
             keywords.add(keyword+ '\n')
             # Has = article -> keyword
-            has.add(sep_value.join([str(articleID), keyword + '\n']))
+            has.add(sep_value.join([str(articleID-1), keyword + '\n']))
             numberWords -= 1
     else:
         numberWords = random.randint(1,8)
@@ -107,7 +107,7 @@ for jp in journal_papers_json:
             keyword = secure_random.choice(randomKeywords)
             keywords.add(keyword+ '\n')
             # Has = article -> keyword
-            has.add(sep_value.join([str(articleID), keyword + '\n']))
+            has.add(sep_value.join([str(articleID-1), keyword + '\n']))
             numberWords -= 1
 
 
