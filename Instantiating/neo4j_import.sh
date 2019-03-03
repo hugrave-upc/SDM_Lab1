@@ -9,15 +9,19 @@ verify_result() {
 }
 
 ## Stopping neo4j service
+echo "Stopping neo4j service..."
 service neo4j stop
 verify_result "Failed to stop neo4j server"
 
 ## Running the CSV generation script
+echo "Creating the CSV files... This may require several minutes!"
 python convertingToCSV.py
 verify_result "Failed to convert sources to CSV"
 
 
 ## Importing the CSV in the db
+echo "Importing the files in neo4j..."
+
 which neo4j-admin
 verify_result "neo4j-admin could not be found"
 
@@ -49,4 +53,5 @@ verify_result "Error importing the data"
 chown neo4j /var/lib/neo4j/data/databases/dblp.db
 
 ## Starting neo4j service
+echo "Starting neo4j service..."
 service neo4j start
