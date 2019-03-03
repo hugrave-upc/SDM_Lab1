@@ -86,7 +86,7 @@ for jp in journal_papers_json:
                 writes.append(sep_value.join([author, 'No', str(articleID-1) + '\n']))
     else:
         author = journal_authors['author']
-        authors.add(author)
+        authors.add(author + '\n')
         # Writes: Author -> Article
         writes.append(sep_value.join([author, 'Yes', str(articleID - 1) + '\n']))
 
@@ -175,7 +175,7 @@ for conf in conferences_json:
                 writes.append(sep_value.join([author, 'No', str(articleID-1) + '\n']))
     else:
         author = journal_authors['author']
-        authors.add(author)
+        authors.add(author + '\n')
         # Writes: Author -> Article
         writes.append(sep_value.join([author, 'Yes', str(articleID - 1) + '\n']))
 
