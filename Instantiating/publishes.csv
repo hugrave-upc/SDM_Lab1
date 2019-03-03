@@ -1,95 +1,95 @@
-:START_ID(Journal);:END_ID(Volume)
-IEEE Signal Process. Mag.;32
-Wireless Networks;21
-IEEE Trans. Human-Machine Systems;45
-IEEE Consumer Electronics Magazine;4
-Appl. Algebra Eng. Commun. Comput.;27
-IEEE Network;29
-IEEE Trans. Wireless Communications;14
-IEEE Trans. Consumer Electronics;61
-Appl. Algebra Eng. Commun. Comput.;28
-Applied Mathematics and Computation;264
-Applied Mathematics and Computation;256
-IEEE Access;7
-Appl. Algebra Eng. Commun. Comput.;30
-IEEE Trans. Industrial Informatics;11
-IEEE/ACM Trans. Netw.;23
-IEEE Internet of Things Journal;2
-IEEE Signal Process. Lett.;22
-Sensors;18
-IEEE Communications Letters;19
-IEEE Trans. Cogn. Comm. &amp; Networking;1
-IEEE Trans. Information Theory;61
-IEEE Internet Computing;19
-Applied Mathematics and Computation;265
-Applied Mathematics and Computation;255
-IEEE Trans. VLSI Syst.;23
-IEEE Trans. Automation Science and Engineering;12
-Applied Mathematics and Computation;271
-IEEE Access;6
-IEEE Cloud Computing;2
-IEEE Trans. Parallel Distrib. Syst.;26
-IEEE Communications Surveys and Tutorials;17
-Sensors;17
-Applied Mathematics and Computation;262
-Applied Mathematics and Computation;254
-Applied Mathematics and Computation;270
-IEEE Pervasive Computing;14
-IEEE Access;5
-Wireless Communications and Mobile Computing;15
-IEEE Trans. Multimedia;17
-IEEE Trans. Med. Imaging;34
-IEEE Trans. Knowl. Data Eng.;27
-Sensors;16
-IEEE Computer;48
-Applied Mathematics and Computation;253
-IEEE Trans. on CAD of Integrated Circuits and Systems;34
-IEEE Trans. Industrial Electronics;63
-J. Network and Computer Applications;50
-IEEE Wireless Commun. Letters;4
-IEEE Trans. Services Computing;8
-IEEE Access;4
-Applied Mathematics and Computation;263
-IEEE Trans. Circuits Syst. Video Techn.;25
-IEEE Trans. Systems, Man, and Cybernetics - Systems;45
-Applied Mathematics and Computation;268
-IEEE Trans. Communications;63
-Sensors;15
-Applied Mathematics and Computation;252
-IEEE Trans. Industrial Electronics;62
-IEEE Trans. Dependable Sec. Comput.;12
-Applied Mathematics and Computation;260
-IEEE Access;3
-IEEE/ACM Trans. Comput. Biology Bioinform.;12
-IEEE Trans. Emerging Topics Comput.;3
-Applied Mathematics and Computation;269
-IEEE Trans. Network and Service Management;12
-IEEE Trans. Industrial Electronics;65
-Applied Mathematics and Computation;251
-Appl. Algebra Eng. Commun. Comput.;29
-Applied Mathematics and Computation;261
-IEEE Trans. Signal Processing;63
-Applied Mathematics and Computation;259
-Comput. J.;58
-Applied Mathematics and Computation;258
-IEEE Trans. Information Forensics and Security;10
-IEEE Trans. Comput. Social Systems;2
-IET Information Security;9
-IEEE Systems Journal;9
-Applied Mathematics and Computation;266
-IEEE Trans. Industrial Electronics;64
-IEEE Trans. on Circuits and Systems;62-II
-IEEE Journal on Selected Areas in Communications;33
-IEEE Trans. Computers;64
-Applied Mathematics and Computation;250
-IET Communications;9
-IEEE Trans. Aerospace and Electronic Systems;51
-IEEE Trans. Intelligent Transportation Systems;16
-IEEE Communications Magazine;53
-IEEE Trans. Image Processing;24
-IEEE Trans. Multi-Scale Computing Systems;1
-IEEE Trans. Mob. Comput.;14
-Applied Mathematics and Computation;267
-IEEE Trans. Vehicular Technology;64
-Applied Mathematics and Computation;257
-IEEE Wireless Commun.;22
+:START_ID(Journal)\u00F7:END_ID(Volume)
+IEEE Trans. on Circuits and Systems\u00F762-II
+IEEE Communications Surveys and Tutorials\u00F717
+IEEE Trans. Industrial Electronics\u00F762
+Applied Mathematics and Computation\u00F7252
+Applied Mathematics and Computation\u00F7268
+IEEE Computer\u00F748
+IEEE Trans. on CAD of Integrated Circuits and Systems\u00F734
+IEEE Internet of Things Journal\u00F72
+IEEE Wireless Commun. Letters\u00F74
+IEEE Internet Computing\u00F719
+Applied Mathematics and Computation\u00F7260
+IEEE Cloud Computing\u00F72
+IEEE Trans. Multimedia\u00F717
+IEEE Trans. Information Theory\u00F761
+IEEE Signal Process. Mag.\u00F732
+IEEE Trans. Industrial Informatics\u00F711
+IEEE Trans. Industrial Electronics\u00F763
+IEEE Trans. Knowl. Data Eng.\u00F727
+Sensors\u00F715
+Applied Mathematics and Computation\u00F7253
+Comput. J.\u00F758
+IEEE Trans. Intelligent Transportation Systems\u00F716
+Applied Mathematics and Computation\u00F7263
+IEEE Trans. Systems, Man, and Cybernetics - Systems\u00F745
+IEEE Pervasive Computing\u00F714
+IEEE Trans. Communications\u00F763
+Applied Mathematics and Computation\u00F7262
+IEEE Trans. Aerospace and Electronic Systems\u00F751
+IEEE Journal on Selected Areas in Communications\u00F733
+IEEE Trans. Wireless Communications\u00F714
+IEEE Trans. Med. Imaging\u00F734
+Applied Mathematics and Computation\u00F7254
+Appl. Algebra Eng. Commun. Comput.\u00F730
+Applied Mathematics and Computation\u00F7257
+Applied Mathematics and Computation\u00F7270
+IEEE Access\u00F77
+IEEE Trans. VLSI Syst.\u00F723
+IEEE Access\u00F76
+Applied Mathematics and Computation\u00F7265
+IEEE Trans. Comput. Social Systems\u00F72
+IEEE/ACM Trans. Comput. Biology Bioinform.\u00F712
+Wireless Communications and Mobile Computing\u00F715
+Appl. Algebra Eng. Commun. Comput.\u00F728
+IEEE/ACM Trans. Netw.\u00F723
+Appl. Algebra Eng. Commun. Comput.\u00F727
+IEEE Communications Letters\u00F719
+IEEE Access\u00F74
+Applied Mathematics and Computation\u00F7271
+IEEE Trans. Cogn. Comm. &amp; Networking\u00F71
+IEEE Communications Magazine\u00F753
+Applied Mathematics and Computation\u00F7264
+IEEE Trans. Computers\u00F764
+Appl. Algebra Eng. Commun. Comput.\u00F729
+IEEE Trans. Emerging Topics Comput.\u00F73
+IEEE Trans. Information Forensics and Security\u00F710
+IEEE Access\u00F75
+IEEE Trans. Consumer Electronics\u00F761
+IEEE Trans. Multi-Scale Computing Systems\u00F71
+Sensors\u00F718
+IEEE Trans. Mob. Comput.\u00F714
+Applied Mathematics and Computation\u00F7256
+IEEE Consumer Electronics Magazine\u00F74
+Applied Mathematics and Computation\u00F7267
+IEEE Wireless Commun.\u00F722
+IET Information Security\u00F79
+IEEE Trans. Image Processing\u00F724
+IET Communications\u00F79
+Applied Mathematics and Computation\u00F7269
+IEEE Network\u00F729
+Applied Mathematics and Computation\u00F7255
+IEEE Trans. Dependable Sec. Comput.\u00F712
+IEEE Trans. Human-Machine Systems\u00F745
+IEEE Trans. Services Computing\u00F78
+IEEE Trans. Parallel Distrib. Syst.\u00F726
+Applied Mathematics and Computation\u00F7266
+IEEE Trans. Industrial Electronics\u00F764
+IEEE Signal Process. Lett.\u00F722
+IEEE Trans. Circuits Syst. Video Techn.\u00F725
+Applied Mathematics and Computation\u00F7250
+Wireless Networks\u00F721
+Sensors\u00F716
+IEEE Access\u00F73
+Applied Mathematics and Computation\u00F7258
+IEEE Trans. Signal Processing\u00F763
+IEEE Trans. Network and Service Management\u00F712
+IEEE Trans. Vehicular Technology\u00F764
+J. Network and Computer Applications\u00F750
+IEEE Trans. Industrial Electronics\u00F765
+Applied Mathematics and Computation\u00F7251
+IEEE Trans. Automation Science and Engineering\u00F712
+Sensors\u00F717
+Applied Mathematics and Computation\u00F7259
+IEEE Systems Journal\u00F79
+Applied Mathematics and Computation\u00F7261
