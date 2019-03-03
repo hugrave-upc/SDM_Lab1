@@ -318,11 +318,11 @@ with codecs.open('./has.csv', 'w', encoding='utf-8') as f:
     f.writelines(has)
 
 with codecs.open('./cites.csv', 'w', encoding='utf-8') as f:
-    f.write(sep_value.join([':START_ID(Article)', ':END_ID(Articles)\n']))
+    f.write(sep_value.join([':START_ID(Article)', ':END_ID(Article)\n']))
     f.writelines(cites)
 
 with codecs.open('./reviews.csv', 'w', encoding='utf-8') as f:
-    f.write(sep_value.join([':START_ID(Author)', ':END_ID(Articles)\n']))
+    f.write(sep_value.join([':START_ID(Author)', ':END_ID(Article)\n']))
     f.writelines(reviews)
 
 
