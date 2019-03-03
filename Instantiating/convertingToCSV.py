@@ -3,8 +3,8 @@ import json, random, codecs
 # Global config variables
 sep_value = '\t'
 
-journal_papers_string = open('./journal_papers.json', 'r').read()
-conferences_string = open('./conferences.json', 'r').read()
+journal_papers_string = open('./sources/journal_papers.json', 'r').read()
+conferences_string = open('./sources/conferences.json', 'r').read()
 
 # Extracting the list of all journal papers
 journal_papers_json = json.loads(journal_papers_string)['result']['hits']['hit']
@@ -245,83 +245,83 @@ for article in articles:
 
 # Creating CSVs
 
-with codecs.open('./articles.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/articles.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join(['articleID:ID(Article)', 'title\n']))
     f.writelines(articles)
 
-with codecs.open('./authors.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/authors.csv', 'w', encoding='utf-8') as f:
     f.write('name:ID(Author)\n')
     f.writelines(authors)
 
-with codecs.open('./writes.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/writes.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join([':START_ID(Author)', 'corresponding_author', ':END_ID(Article)\n']))
     f.writelines(writes)
 
-with codecs.open('./journals.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/journals.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join(['journalID:ID(Journal)', 'title\n']))
     f.writelines(journals)
 
-with codecs.open('./vol_contains.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/vol_contains.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join([':START_ID(Volume)', 'pages', ':END_ID(Article)\n']))
     f.writelines(vol_contains)
 
-with codecs.open('./volumes.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/volumes.csv', 'w', encoding='utf-8') as f:
     f.write('number:ID(Volume)\n')
     f.writelines(volumes)
 
-with codecs.open('./publishes.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/publishes.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join([':START_ID(Journal)', ':END_ID(Volume)\n']))
     f.writelines(publishes)
 
-with codecs.open('./in_year_vol.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/in_year_vol.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join([':START_ID(Volume)', ':END_ID(Year)\n']))
     f.writelines(in_year_vol)
 
-with codecs.open('./years.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/years.csv', 'w', encoding='utf-8') as f:
     f.write('number:ID(Year)\n')
     f.writelines(years)
 
-with codecs.open('./conferences.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/conferences.csv', 'w', encoding='utf-8') as f:
     f.write('name:ID(Conference)\n')
     f.writelines(conferences)
 
-with codecs.open('./editions.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/editions.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join(['proceeding:ID(Edition)', 'number\n']))
     f.writelines(editions.values())
 
-with codecs.open('./cities.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/cities.csv', 'w', encoding='utf-8') as f:
     f.write('name:ID(City)\n')
     f.writelines(cities)
 
-with codecs.open('./proc_contains.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/proc_contains.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join([':START_ID(Edition)', 'pages', ':END_ID(Article)\n']))
     f.writelines(proc_contains)
 
-with codecs.open('./has_an.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/has_an.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join([':START_ID(Conference)', ':END_ID(Edition)\n']))
     f.writelines(has_an)
 
-with codecs.open('./occurs_in.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/occurs_in.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join([':START_ID(Edition)', ':END_ID(City)\n']))
     f.writelines(occurs_in.values())
 
-with codecs.open('./in_year_ed.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/in_year_ed.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join([':START_ID(Edition)', ':END_ID(Year)\n']))
     f.writelines(in_year_ed)
 
-with codecs.open('./keywords.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/keywords.csv', 'w', encoding='utf-8') as f:
     f.write('name:ID(Keyword)\n')
     f.writelines(keywords)
 
-with codecs.open('./has.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/has.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join([':START_ID(Article)', ':END_ID(Keyword)\n']))
     f.writelines(has)
 
-with codecs.open('./cites.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/cites.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join([':START_ID(Article)', ':END_ID(Article)\n']))
     f.writelines(cites)
 
-with codecs.open('./reviews.csv', 'w', encoding='utf-8') as f:
+with codecs.open('./out_csv/reviews.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join([':START_ID(Author)', ':END_ID(Article)\n']))
     f.writelines(reviews)
 

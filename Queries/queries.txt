@@ -1,0 +1,14 @@
+# 1
+
+match (author:Author)-[:Writes]->(art:Article)<-[c:Cites]-(:Article)
+with author, art, count(c) as numbOfCitations
+order by author, numbOfCitations desc
+with author, collect(numbOfCitations) as artCit
+return author.name, artCit, size([pos in range(1,size(artCit)) where artCit[pos-1] >= pos]) as h_index
+
+# 2
+
+match (conf:Conference)-->(:Edition)-->(art:Article)<-[c:Cites]-()
+with conf, art, count(c) as citations
+order by conf, citations desc
+return conf, collect({article:art.title, cit:citations})[0..3] as listCit
