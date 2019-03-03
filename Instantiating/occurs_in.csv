@@ -1,104 +1,104 @@
-:START_ID(Edition)\u00F7:END_ID(City)
-IEEEscc2\u00F7London
-bildmed1\u00F7Paris
-3dor3\u00F7Copenhagen
-3dor2\u00F7Berlin
-analco1\u00F7Rome
-3dor7\u00F7Copenhagen
-3dor6\u00F7Madrid
-3dor5\u00F7Hamburg
-3dor4\u00F7Brussels
-innovations1\u00F7Paris
-3dic6\u00F7Stockholm
-3dic7\u00F7Hamburg
-3dic4\u00F7Manchester
-3dic5\u00F7Brussels
-enter1\u00F7Amsterdam
-ctrsa1\u00F7Madrid
-ACISicis3\u00F7Madrid
-ACISicis2\u00F7Manchester
-ACISicis5\u00F7Lisbon
-ACISicis4\u00F7Manchester
-ACISicis7\u00F7Rome
-ACISicis6\u00F7Berlin
-ACMse7\u00F7Berlin
-ACMse6\u00F7Hamburg
-ACMse3\u00F7Copenhagen
-cpp1\u00F7London
-IEEEpact2\u00F7Barcelona
-f-egc1\u00F7Amsterdam
-3dica4\u00F7Stockholm
-3dica5\u00F7Rome
-3dica6\u00F7Brussels
-3dica7\u00F7London
-automation1\u00F7Barcelona
-IEEEants6\u00F7Hamburg
-ctic1\u00F7Rome
-3dtv3\u00F7Berlin
-3dtv4\u00F7Stockholm
-3dtv5\u00F7Paris
-3dtv6\u00F7Rome
-3dtv7\u00F7Rome
-ACMace5\u00F7Hamburg
-ACMace4\u00F7Stockholm
-ACMace7\u00F7Paris
-ACMace6\u00F7Madrid
-ACMace3\u00F7Amsterdam
-IEEEares2\u00F7Hamburg
-IEEEares3\u00F7London
-IEEEicci2\u00F7Brussels
-IEEEares6\u00F7Manchester
-IEEEares7\u00F7Berlin
-IEEEares4\u00F7Amsterdam
-IEEEares5\u00F7Lisbon
-Dstep6\u00F7Amsterdam
-IEEEcloud2\u00F7London
-icla1\u00F7Hamburg
-icdcit1\u00F7Hamburg
-hm1\u00F7Paris
-hpcasia1\u00F7Madrid
-5gwf2\u00F7London
-ACMdis6\u00F7Copenhagen
-ACMdis4\u00F7Brussels
-ACMdis2\u00F7Rome
-ACMdis3\u00F7Manchester
-caldam1\u00F7Berlin
-aspdac1\u00F7Manchester
-3pgcic3\u00F7Rome
-3pgcic6\u00F7Paris
-3pgcic7\u00F7Lisbon
-3pgcic4\u00F7London
-3pgcic5\u00F7Madrid
-5gwn3\u00F7Berlin
-acsw1\u00F7Stockholm
-icdcn1\u00F7Paris
-alenex1\u00F7Paris
-cc1\u00F7Barcelona
-cidr1\u00F7Amsterdam
-ACMicec7\u00F7Rome
-ACMicec6\u00F7Paris
-ACMicec5\u00F7London
-ACMicec4\u00F7Hamburg
-3dui3\u00F7Barcelona
-3dui4\u00F7Manchester
-3dui5\u00F7Manchester
-3dui6\u00F7Lisbon
-3dui7\u00F7Berlin
-IEEEants7\u00F7Madrid
-cep1\u00F7Rome
-IEEEants5\u00F7Amsterdam
-IEEEants4\u00F7Rome
-IEEEants3\u00F7Madrid
-3dim2\u00F7Brussels
-3dim3\u00F7Lisbon
-3dim4\u00F7Rome
-3dim5\u00F7Paris
-3dim6\u00F7Paris
-3dim7\u00F7Brussels
-ace1\u00F7Paris
-aaai1\u00F7Amsterdam
-aaaiss1\u00F7Madrid
-5gu6\u00F7Barcelona
-comad1\u00F7Stockholm
-IEEEcca5\u00F7Copenhagen
-IEEEcca7\u00F7Rome
+:START_ID(Edition)	:END_ID(City)
+IEEEscc2	Barcelona
+bildmed1	Brussels
+3dor3	Paris
+3dor2	Berlin
+analco1	Paris
+3dor7	Rome
+3dor6	London
+3dor5	Manchester
+3dor4	Manchester
+innovations1	Madrid
+3dic6	Rome
+3dic7	Amsterdam
+3dic4	Stockholm
+3dic5	Hamburg
+enter1	Paris
+ctrsa1	Copenhagen
+ACISicis3	Lisbon
+ACISicis2	Paris
+ACISicis5	Brussels
+ACISicis4	Paris
+ACISicis7	Brussels
+ACISicis6	London
+ACMse7	Berlin
+ACMse6	Madrid
+ACMse3	Copenhagen
+cpp1	Stockholm
+IEEEpact2	Barcelona
+f-egc1	Stockholm
+3dica4	Paris
+3dica5	Paris
+3dica6	London
+3dica7	Hamburg
+automation1	Hamburg
+IEEEants6	Lisbon
+ctic1	Lisbon
+3dtv3	Amsterdam
+3dtv4	London
+3dtv5	Amsterdam
+3dtv6	Hamburg
+3dtv7	Barcelona
+ACMace5	Manchester
+ACMace4	Barcelona
+ACMace7	Paris
+ACMace6	Copenhagen
+ACMace3	London
+IEEEares2	Barcelona
+IEEEares3	Brussels
+IEEEicci2	Stockholm
+IEEEares6	Manchester
+IEEEares7	Manchester
+IEEEares4	Barcelona
+IEEEares5	Paris
+Dstep6	Berlin
+IEEEcloud2	Hamburg
+icla1	Hamburg
+icdcit1	Brussels
+hm1	Madrid
+hpcasia1	London
+5gwf2	Brussels
+ACMdis6	Rome
+ACMdis4	Hamburg
+ACMdis2	Copenhagen
+ACMdis3	Copenhagen
+caldam1	Berlin
+aspdac1	Manchester
+3pgcic3	Lisbon
+3pgcic6	Hamburg
+3pgcic7	Manchester
+3pgcic4	Amsterdam
+3pgcic5	Paris
+5gwn3	Copenhagen
+acsw1	Berlin
+icdcn1	Rome
+alenex1	London
+cc1	Berlin
+cidr1	Paris
+ACMicec7	London
+ACMicec6	Amsterdam
+ACMicec5	Berlin
+ACMicec4	Manchester
+3dui3	Berlin
+3dui4	Berlin
+3dui5	London
+3dui6	Paris
+3dui7	Berlin
+IEEEants7	Copenhagen
+cep1	Stockholm
+IEEEants5	Berlin
+IEEEants4	Stockholm
+IEEEants3	Hamburg
+3dim2	Lisbon
+3dim3	Paris
+3dim4	Barcelona
+3dim5	Berlin
+3dim6	Rome
+3dim7	Stockholm
+ace1	Stockholm
+aaai1	London
+aaaiss1	Barcelona
+5gu6	Barcelona
+comad1	Amsterdam
+IEEEcca5	Barcelona
+IEEEcca7	Lisbon

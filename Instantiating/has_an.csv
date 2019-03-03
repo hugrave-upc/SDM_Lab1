@@ -1,104 +1,104 @@
-:START_ID(Conference)\u00F7:END_ID(Edition)
-cidr\u00F7cidr1
-3dic\u00F73dic7
-3dui\u00F73dui6
-3dor\u00F73dor3
-IEEEcca\u00F7IEEEcca5
-ACMicec\u00F7ACMicec6
-IEEEscc\u00F7IEEEscc2
-3dica\u00F73dica4
-ACISicis\u00F7ACISicis7
-ACMace\u00F7ACMace7
-IEEEares\u00F7IEEEares6
-3dim\u00F73dim4
-ACMace\u00F7ACMace3
-3pgcic\u00F73pgcic3
-ACMace\u00F7ACMace4
-3dui\u00F73dui7
-ACMse\u00F7ACMse6
-ACMicec\u00F7ACMicec7
-hm\u00F7hm1
-3dica\u00F73dica5
-3dim\u00F73dim5
-5gwf\u00F75gwf2
-cep\u00F7cep1
-ACMace\u00F7ACMace5
-ACMicec\u00F7ACMicec4
-3dtv\u00F73dtv3
-ctrsa\u00F7ctrsa1
-ACMse\u00F7ACMse7
-IEEEcloud\u00F7IEEEcloud2
-3pgcic\u00F73pgcic4
-3dim\u00F73dim6
-3dica\u00F73dica7
-caldam\u00F7caldam1
-f-egc\u00F7f-egc1
-innovations\u00F7innovations1
-3dor\u00F73dor6
-ACMace\u00F7ACMace6
-hpcasia\u00F7hpcasia1
-IEEEants\u00F7IEEEants3
-3dtv\u00F73dtv4
-acsw\u00F7acsw1
-3dica\u00F73dica6
-3pgcic\u00F73pgcic5
-ACMdis\u00F7ACMdis2
-3dim\u00F73dim7
-ACISicis\u00F7ACISicis2
-3dor\u00F73dor7
-ctic\u00F7ctic1
-enter\u00F7enter1
-3dtv\u00F73dtv5
-3pgcic\u00F73pgcic6
-icdcn\u00F7icdcn1
-IEEEants\u00F7IEEEants4
-IEEEpact\u00F7IEEEpact2
-cpp\u00F7cpp1
-ACMdis\u00F7ACMdis3
-analco\u00F7analco1
-5gu\u00F75gu6
-ACISicis\u00F7ACISicis3
-bildmed\u00F7bildmed1
-3dtv\u00F73dtv6
-3dic\u00F73dic4
-3dor\u00F73dor5
-3dui\u00F73dui3
-3pgcic\u00F73pgcic7
-IEEEares\u00F7IEEEares2
-IEEEants\u00F7IEEEants5
-ACMicec\u00F7ACMicec5
-IEEEares\u00F7IEEEares7
-ACMdis\u00F7ACMdis4
-3dor\u00F73dor4
-aspdac\u00F7aspdac1
-ACISicis\u00F7ACISicis4
-alenex\u00F7alenex1
-comad\u00F7comad1
-3dic\u00F73dic5
-3dtv\u00F73dtv7
-aaai\u00F7aaai1
-3dui\u00F73dui4
-ace\u00F7ace1
-ACMse\u00F7ACMse3
-IEEEants\u00F7IEEEants6
-IEEEares\u00F7IEEEares3
-IEEEcca\u00F7IEEEcca7
-automation\u00F7automation1
-IEEEares\u00F7IEEEares4
-3dim\u00F73dim2
-cc\u00F7cc1
-ACISicis\u00F7ACISicis5
-Dstep\u00F7Dstep6
-3dic\u00F73dic6
-IEEEants\u00F7IEEEants7
-3dor\u00F73dor2
-3dui\u00F73dui5
-ACISicis\u00F7ACISicis6
-IEEEicci\u00F7IEEEicci2
-IEEEares\u00F7IEEEares5
-3dim\u00F73dim3
-icdcit\u00F7icdcit1
-ACMdis\u00F7ACMdis6
-icla\u00F7icla1
-5gwn\u00F75gwn3
-aaaiss\u00F7aaaiss1
+:START_ID(Conference)	:END_ID(Edition)
+IEEEares	IEEEares6
+f-egc	f-egc1
+ACMace	ACMace5
+ACISicis	ACISicis5
+3dica	3dica4
+3dor	3dor6
+3dim	3dim3
+3dui	3dui4
+innovations	innovations1
+3pgcic	3pgcic3
+hm	hm1
+IEEEcca	IEEEcca5
+ACMace	ACMace4
+3dica	3dica7
+ACISicis	ACISicis4
+ACMdis	ACMdis6
+ACMse	ACMse7
+3dor	3dor5
+3dim	3dim2
+ACISicis	ACISicis3
+3dui	3dui7
+3dtv	3dtv5
+ctic	ctic1
+ACMicec	ACMicec5
+automation	automation1
+ACMace	ACMace3
+aaai	aaai1
+ctrsa	ctrsa1
+cidr	cidr1
+3dica	3dica6
+3dor	3dor4
+ACISicis	ACISicis2
+3dim	3dim5
+ACMse	ACMse6
+cpp	cpp1
+3dui	3dui6
+3dtv	3dtv4
+ACMicec	ACMicec4
+3pgcic	3pgcic5
+enter	enter1
+IEEEscc	IEEEscc2
+acsw	acsw1
+IEEEants	IEEEants7
+IEEEares	IEEEares3
+icdcit	icdcit1
+3dor	3dor3
+3dim	3dim4
+ACMicec	ACMicec7
+aaaiss	aaaiss1
+IEEEpact	IEEEpact2
+3dtv	3dtv7
+3pgcic	3pgcic4
+3dic	3dic5
+3pgcic	3pgcic6
+IEEEares	IEEEares2
+IEEEants	IEEEants6
+ACMdis	ACMdis3
+5gwf	5gwf2
+3dor	3dor2
+3dim	3dim7
+ACMicec	ACMicec6
+3dtv	3dtv6
+icla	icla1
+3dic	3dic4
+hpcasia	hpcasia1
+IEEEares	IEEEares5
+IEEEants	IEEEants5
+ACMdis	ACMdis2
+3dui	3dui3
+caldam	caldam1
+aspdac	aspdac1
+3dim	3dim6
+ACMse	ACMse3
+analco	analco1
+IEEEants	IEEEants4
+ACMace	ACMace7
+3dic	3dic7
+cc	cc1
+IEEEares	IEEEares4
+ace	ace1
+ACISicis	ACISicis7
+3pgcic	3pgcic7
+IEEEicci	IEEEicci2
+5gwn	5gwn3
+bildmed	bildmed1
+ACMace	ACMace6
+IEEEares	IEEEares7
+3dic	3dic6
+IEEEants	IEEEants3
+5gu	5gu6
+IEEEcca	IEEEcca7
+ACMdis	ACMdis4
+3dica	3dica5
+3dor	3dor7
+ACISicis	ACISicis6
+Dstep	Dstep6
+3dui	3dui5
+3dtv	3dtv3
+cep	cep1
+IEEEcloud	IEEEcloud2
+icdcn	icdcn1
+alenex	alenex1
+comad	comad1
