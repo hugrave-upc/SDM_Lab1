@@ -1,7 +1,7 @@
 import json, random, codecs
 
 # Global config variables
-sep_value = ';'
+sep_value = '\u00F7'
 
 journal_papers_string = open('./journal_papers.json', 'r').read()
 conferences_string = open('./conferences.json', 'r').read()
