@@ -14,7 +14,6 @@ neo4j-admin import --mode=csv --database=dblp.db --delimiter "TAB" --id-type str
 --nodes:Journal "journals.csv" \
 --nodes:Keyword "keywords.csv" \
 --nodes:Volume "volumes.csv" \
---nodes:University "world-universities.csv" \
 --nodes:Year "years.csv" \
 --relationships:Cites "cites.csv" \
 --relationships:Has "has.csv" \
