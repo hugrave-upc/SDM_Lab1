@@ -1,2 +1,29 @@
 #!/bin/bash
-neo4j-admin import --mode=csv --database=dblp.db --delimiter ";" --array-delimiter "|" --id-type INTEGER --nodes:incollection "out_incollection_header.csv,out_incollection.csv" --nodes:book "out_book_header.csv,out_book.csv" --nodes:article "out_article_header.csv,out_article.csv" --nodes:mastersthesis "out_mastersthesis_header.csv,out_mastersthesis.csv" --nodes:phdthesis "out_phdthesis_header.csv,out_phdthesis.csv" --nodes:proceedings "out_proceedings_header.csv,out_proceedings.csv" --nodes:www "out_www_header.csv,out_www.csv" --nodes:inproceedings "out_inproceedings_header.csv,out_inproceedings.csv" --nodes:journal "out_journal.csv" --relationships:published_in "out_journal_published_in.csv" --nodes:author "out_author.csv" --relationships:authored_by "out_author_authored_by.csv"
+
+which neo4j-admin
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+
+neo4j-admin import --mode=csv --database=dblp.db --delimiter "," --id-type string \
+--nodes:Author "authors.csv" \
+--nodes:Article "articles.csv" \
+--nodes:City "cities.csv" \
+--nodes:Conference "conferences.csv" \
+--nodes:Edition "editions.csv" \
+--nodes:Journal "journals.csv" \
+--nodes:Keyword "keywords.csv" \
+--nodes:Volume "volumes.csv" \
+--nodes:University "world-universities.csv" \
+--nodes:Year "years.csv" \
+--relationships:Cites "cites.csv" \
+--relationships:Has "has.csv" \
+--relationships:Has_an "has_an.csv" \
+--relationships:In "in_year_ed.csv" \
+--relationships:In "in_year_vol.csv" \
+--relationships:Occurs_in "occurs_in.csv" \
+--relationships:Contains "proc_contains.csv" \
+--relationships:Publishes "publishes.csv" \
+--relationships:Reviews "reviews.csv" \
+--relationships:Contains "vol_contains.csv" \
+--relationships:Writes "writes.csv"
