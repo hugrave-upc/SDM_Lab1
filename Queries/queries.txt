@@ -20,3 +20,4 @@ with conf.name as conf, author.name as Author, collect (distinct e.number) as nu
 order by conf
 where size(numPub)>=4
 return conf as Conference, Author, numPub as Edition_Number
+## return conf as Conference, collect({author:Author, editions_joined:numPub})
