@@ -158,11 +158,11 @@ for conf in conferences_json:
     editions[edition] = sep_value.join([edition, str(ed_key) + '\n'])
 
     # Creating author
-    journal_authors = journal_paper['authors']
+    conf_authors = conf_paper['authors']
     corresponding = 0
 
-    if isinstance(journal_authors['author'], list):
-        for author in journal_authors['author']:
+    if isinstance(conf_authors['author'], list):
+        for author in conf_authors['author']:
             authors.add(author + '\n')
 
 
@@ -174,7 +174,7 @@ for conf in conferences_json:
             else:
                 writes.append(sep_value.join([author, 'No', str(articleID-1) + '\n']))
     else:
-        author = journal_authors['author']
+        author = conf_authors['author']
         authors.add(author + '\n')
         # Writes: Author -> Article
         writes.append(sep_value.join([author, 'Yes', str(articleID - 1) + '\n']))
