@@ -10,7 +10,7 @@ verify_result() {
 
 ## Stopping neo4j service
 echo "Stopping neo4j service..."
-service neo4j stop
+neo4j stop
 verify_result "Failed to stop neo4j server"
 
 ## Running the CSV generation script
@@ -54,4 +54,4 @@ chown neo4j /var/lib/neo4j/data/databases/dblp.db
 
 ## Starting neo4j service
 echo "Starting neo4j service..."
-service neo4j start
+neo4j start
