@@ -158,11 +158,11 @@ for conf in conferences_json:
     editions[edition] = sep_value.join([edition, str(ed_key) + '\n'])
 
     # Creating author
-    journal_authors = journal_paper['authors']
+    conf_authors = conf_paper['authors']
     corresponding = 0
 
-    if isinstance(journal_authors['author'], list):
-        for author in journal_authors['author']:
+    if isinstance(conf_authors['author'], list):
+        for author in conf_authors['author']:
             authors.add(author + '\n')
 
 
@@ -174,7 +174,7 @@ for conf in conferences_json:
             else:
                 writes.append(sep_value.join([author, 'No', str(articleID-1) + '\n']))
     else:
-        author = journal_authors['author']
+        author = conf_authors['author']
         authors.add(author + '\n')
         # Writes: Author -> Article
         writes.append(sep_value.join([author, 'Yes', str(articleID - 1) + '\n']))
@@ -215,11 +215,11 @@ for conf in conferences_json:
     in_year_ed.add(sep_value.join([edition, year + '\n']))
 
 
-
-
 # Creating citations and reviewers
-for article in articles:
-    article_id = article.split(sep_value)[0]
+articleID = 1
+for artInfo in journal_papers_json + conferences_json:
+    article = artInfo['info']
+    article_id = str(articleID)
     numCitation = random.randint(2,10)
     secure_random = random.SystemRandom()
 
@@ -228,11 +228,14 @@ for article in articles:
     numReviewers = 3
     while numReviewers > 0:
         author = secure_random.sample(authors,1)[0].replace('\n', '')
-        wroteYes = sep_value.join([author, 'Yes', article_id])
-        wroteNo = sep_value.join([author, 'No', article_id])
-        if wroteYes not in writes and wroteNo not in writes:
-            reviews.add(sep_value.join([author, article_id + '\n']))
-            numReviewers -= 1
+        if isinstance(article['authors']['author'], list):
+            if author not in article['authors']['author']:
+                reviews.add(sep_value.join([author, article_id + '\n']))
+                numReviewers -= 1
+        else:
+            if author != article['authors']['author']:
+                reviews.add(sep_value.join([author, article_id + '\n']))
+                numReviewers -= 1
 
     # Adding citations
 
@@ -242,6 +245,7 @@ for article in articles:
             cites.add(sep_value.join([article_id, cited + '\n']))
             numCitation -= 1
 
+    articleID += 1
 
 # Creating CSVs
 

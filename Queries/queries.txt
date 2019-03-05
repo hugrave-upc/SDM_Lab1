@@ -12,3 +12,11 @@ match (conf:Conference)-->(:Edition)-->(art:Article)<-[c:Cites]-()
 with conf, art, count(c) as citations
 order by conf, citations desc
 return conf, collect({article:art.title, cit:citations})[0..3] as listCit
+
+# 3
+
+match (author:Author)-[:Writes]->(art:Article)<-[:Contains]-(e:Edition)<-[:Has_an]-(conf:Conference)
+with conf.name as conf, author.name as Author, collect (distinct e.number) as numPub 
+order by conf
+where size(numPub)>=4
+return conf as Conference, Author, numPub as Edition_Number
