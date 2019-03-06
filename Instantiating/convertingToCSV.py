@@ -1,7 +1,10 @@
-import json, random, codecs
+import json, random, codecs, os
+from faker import Faker
+fake = Faker()
 
 # Global config variables
 sep_value = '\t'
+companies_number = 1000
 
 journal_papers_string = open('./sources/journal_papers.json', 'r').read()
 conferences_string = open('./sources/conferences.json', 'r').read()
@@ -45,6 +48,10 @@ in_year_ed = set()
 has = set()
 cites = set()
 reviews = set()
+
+
+# Extending data structures
+reviewsSummary = []
 
 # JOURNALS
 
@@ -215,6 +222,18 @@ for conf in conferences_json:
     in_year_ed.add(sep_value.join([edition, year + '\n']))
 
 
+
+
+def addReviewsSummary(article_id, reviewers):
+    negativeBallot = bool(random.getrandbits(1))
+    if negativeBallot:
+        negative_reviewer = reviewers.pop(0)
+        reviewsSummary.append(sep_value.join([negative_reviewer, article_id, 'Rejected', fake.text() + '\n']))
+    for reviewer in reviewers:
+        reviewsSummary.append(sep_value.join([reviewer, article_id, 'Approved', fake.text() + '\n']))
+
+
+
 # Creating citations and reviewers
 articleID = 1
 for artInfo in journal_papers_json + conferences_json:
@@ -226,16 +245,20 @@ for artInfo in journal_papers_json + conferences_json:
     # Adding reviewers
 
     numReviewers = 3
+    reviewers = []
     while numReviewers > 0:
-        author = secure_random.sample(authors,1)[0].replace('\n', '')
+        reviewer = secure_random.sample(authors,1)[0].replace('\n', '')
         if isinstance(article['authors']['author'], list):
-            if author not in article['authors']['author']:
-                reviews.add(sep_value.join([author, article_id + '\n']))
+            if reviewer not in article['authors']['author']:
+                reviews.add(sep_value.join([reviewer, article_id + '\n']))
+                reviewers.append(reviewer)
                 numReviewers -= 1
         else:
-            if author != article['authors']['author']:
-                reviews.add(sep_value.join([author, article_id + '\n']))
+            if reviewer != article['authors']['author']:
+                reviews.add(sep_value.join([reviewer, article_id + '\n']))
+                reviewers.append(reviewer)
                 numReviewers -= 1
+    addReviewsSummary(article_id, reviewers)
 
     # Adding citations
 
@@ -246,6 +269,13 @@ for artInfo in journal_papers_json + conferences_json:
             numCitation -= 1
 
     articleID += 1
+
+# Creating random companies
+if not os.path.isfile('./out_csv/companies.csv'):
+    companies = []
+    for idx in range(0, companies_number):
+        companies.append(sep_value.join([fake.company(), random.choice(randomCities) + '\n']))
+
 
 # Creating CSVs
 
@@ -329,9 +359,12 @@ with codecs.open('./out_csv/reviews.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join([':START_ID(Author)', ':END_ID(Article)\n']))
     f.writelines(reviews)
 
+with codecs.open('./out_csv/reviews_summary.csv', 'w', encoding='utf8') as f:
+    f.write(sep_value.join(['Reviewer', 'ArticleID', 'Decision', 'Description\n']))
+    f.writelines(reviewsSummary)
 
-
-
-
-
+if not os.path.isfile('./out_csv/companies.csv'):
+    with open('./out_csv/companies.csv', 'w') as f:
+        f.write(sep_value.join(['Company name', 'City\n']))
+        f.writelines(companies)
 
