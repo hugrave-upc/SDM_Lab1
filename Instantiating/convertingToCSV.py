@@ -228,9 +228,9 @@ def addReviewsSummary(article_id, reviewers):
     negativeBallot = bool(random.getrandbits(1))
     if negativeBallot:
         negative_reviewer = reviewers.pop(0)
-        reviewsSummary.append(sep_value.join([negative_reviewer, article_id, 'Rejected', fake.text() + '\n']))
+        reviewsSummary.append(sep_value.join([negative_reviewer, article_id, 'Rejected', ' '.join(fake.text().splitlines()) + '\n']))
     for reviewer in reviewers:
-        reviewsSummary.append(sep_value.join([reviewer, article_id, 'Approved', fake.text() + '\n']))
+        reviewsSummary.append(sep_value.join([reviewer, article_id, 'Approved', ' '.join(fake.text().splitlines()) + '\n']))
 
 
 
