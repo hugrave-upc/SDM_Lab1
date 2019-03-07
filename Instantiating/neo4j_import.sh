@@ -5,6 +5,8 @@ FALSE=1
 
 . ../Utility/utility.sh
 
+NEO4J_IMPORT="/var/lib/neo4j/import/"
+
 ## Parsing arguments
 POSITIONAL=()
 
@@ -75,5 +77,10 @@ neo4j-admin import --mode=csv --database=dblp.db --delimiter "TAB" --id-type str
 verify_result "Error importing the data"
 
 chown neo4j /var/lib/neo4j/data/databases/dblp.db
+
+# Move the reviews, companies and the universities in the import folder
+mv "out_csv/companies.csv" "$NEO4J_IMPORT"
+mv "out_csv/reviews_summary.csv" "$NEO4J_IMPORT"
+mv "out_csv/world-universities.csv" "$NEO4J_IMPORT"
 
 header "Imported successfully. Kill manually the last neo4j process and start it again."
