@@ -1,12 +1,30 @@
 #!/bin/bash
 
+TRUE=0
+FALSE=1
 
 verify_result() {
     if [ $? -ne 0 ]; then
         echo $1
-        exit 1
+        exit $FALSE
     fi
 }
+
+
+## Parsing arguments
+POSITIONAL=()
+
+prepare_csv=$TRUE
+while [[ $# -gt 0 ]]; do
+    key = "$1"
+    case $key in
+        --no-csv)
+        prepare_csv=$FALSE
+    esac
+
+done
+
+set -- "${POSITIONAL[@]}"
 
 ## Stopping neo4j service
 echo "Stopping neo4j service..."
@@ -16,15 +34,16 @@ service neo4j stop
 verify_result "Failed to stop neo4j server"
 
 ## Running the CSV generation script
-echo "Creating the CSV files... This may require several minutes!"
-python convertingToCSV.py
-verify_result "Failed to convert sources to CSV"
-
+if [[ $prepare_csv -eq $TRUE ]]; then
+    echo "Creating the CSV files... This may require several minutes!"
+    python convertingToCSV.py
+    verify_result "Failed to convert sources to CSV"
+fi
 
 ## Importing the CSV in the db
 echo "Importing the files in neo4j..."
 
-which neo4j-admin
+which neo4j-admin > /dev/null
 verify_result "neo4j-admin could not be found"
 
 rm -rf /var/lib/neo4j/data/databases/dblp.db
