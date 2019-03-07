@@ -44,6 +44,7 @@ header "Load indexes..."
 cat "$add_indexes_script" | cypher-shell
 verify_result "Failed to load the indexes."
 
+sleep 2
 # Loading the reviews in the graph
 header "Loading reviews..."
 cat "$add_rev_script" | cypher-shell
