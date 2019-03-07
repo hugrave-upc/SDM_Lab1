@@ -2,7 +2,7 @@
 
 from neo4j import GraphDatabase
 
-import random
+import random, codecs
 
 uri = 'bolt://localhost:7687'
 driver = GraphDatabase.driver(uri, auth=('', ''))
@@ -33,7 +33,7 @@ with driver.session() as session:
     comp_list = list(companies)
     uni_list = list(universities)
 
-    print(len(comp_list), len(uni_list))
+
 affiliations = set()
 for author in authors:
     isCompany = bool(random.getrandbits(1))
@@ -42,6 +42,6 @@ for author in authors:
     else:
         affiliations.add(sep_value.join([author['name'], random.choice(uni_list)['name'], 'University\n']))
 
-with open('./out_csv/affiliations.csv', 'w') as f:
+with codecs.open('./out_csv/affiliations.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join(['author', 'institution name', 'Company|University\n']))
     f.writelines(affiliations)
