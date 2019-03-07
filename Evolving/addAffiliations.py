@@ -24,18 +24,6 @@ def get_universities(tx):
     universities = tx.run("match (u:University) return u.name as name;")
     return universities
 
-# Setting the affiliation with university
-def university_affiliated(tx, authorName, uniName):
-    tx.run("match (auth:Author {name: {authorName}}) "
-           "create (auth)-[:Affiliated_to]->(:University {name: {uniName}});",
-           authorName=authorName, uniName=uniName)
-
-# Setting the affiliation with company
-def company_affiliated(tx, authorName, compName):
-    tx.run("match (auth:Author {name: {authorName}}) "
-           "create (auth)-[:Affiliated_to]->(:Company {name: {compName}});",
-           authorName=authorName, compName=compName)
-
 
 
 with driver.session() as session:

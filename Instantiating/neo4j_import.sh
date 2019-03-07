@@ -3,13 +3,7 @@
 TRUE=0
 FALSE=1
 
-verify_result() {
-    if [ $? -ne 0 ]; then
-        echo $1
-        exit $FALSE
-    fi
-}
-
+. ../Utility/utility.sh
 
 ## Parsing arguments
 POSITIONAL=()
@@ -35,7 +29,7 @@ set -- "${POSITIONAL[@]}"
 
 
 ## Stopping neo4j service
-echo "Stopping neo4j service..."
+header "Stopping neo4j service..."
 neo4j stop
 verify_result "Failed to stop neo4j server"
 service neo4j stop
@@ -49,7 +43,7 @@ if [[ "$prepare_csv" -eq "$TRUE" ]]; then
 fi
 
 ## Importing the CSV in the db
-echo "Importing the files in neo4j..."
+header "Importing the files in neo4j..."
 
 which neo4j-admin > /dev/null
 verify_result "neo4j-admin could not be found"
@@ -82,7 +76,4 @@ verify_result "Error importing the data"
 
 chown neo4j /var/lib/neo4j/data/databases/dblp.db
 
-## Starting neo4j service
-echo "Starting neo4j service..."
-neo4j start
-service neo4j start
+header "Imported successfully. Kill manually the last neo4j process and start it again."
