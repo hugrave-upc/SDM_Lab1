@@ -17,14 +17,22 @@ POSITIONAL=()
 prepare_csv="$TRUE"
 while [[ $# -gt 0 ]]; do
     key="$1"
-    case $key in
+    case "$key" in
         --no-csv)
         prepare_csv="$FALSE"
+        shift
+        shift
+        ;;
+        *)    # unknown option
+        POSITIONAL+=("$1") # save it in an array for later
+        shift # past argument
+        ;;
     esac
 
 done
 
 set -- "${POSITIONAL[@]}"
+
 
 ## Stopping neo4j service
 echo "Stopping neo4j service..."
