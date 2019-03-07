@@ -55,6 +55,7 @@ which neo4j-admin > /dev/null
 verify_result "neo4j-admin could not be found"
 
 rm -rf /var/lib/neo4j/data/databases/dblp.db
+verify_result "impossible to remove the database"
 
 neo4j-admin import --mode=csv --database=dblp.db --delimiter "TAB" --id-type string \
 --nodes:Author "out_csv/authors.csv" \
@@ -83,5 +84,5 @@ chown neo4j /var/lib/neo4j/data/databases/dblp.db
 
 ## Starting neo4j service
 echo "Starting neo4j service..."
-service neo4j start
 neo4j start
+service neo4j start
