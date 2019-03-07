@@ -20,7 +20,7 @@ def setReview(tx, fields):
     decision = fields[2]
     desc = fields[3]
 
-    result = tx.run("match (:Author {name: {reviewer})-[r:Reviews]->(:Article {articleID: {articleID}}) "
+    result = tx.run("match (:Author {name: {reviewer}})-[r:Reviews]->(:Article {articleID: {articleID}}) "
                     "set r.decision = {decision} "
                     "set r.description = {desc};",
                     reviewer=reviewer, articleID=articleID, decision=decision, desc=desc)
