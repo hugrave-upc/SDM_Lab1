@@ -1,0 +1,3 @@
+create index on :Author(name);
+create index on :Company(name);
+create index on :University(name);
