@@ -2,7 +2,7 @@
 
 from neo4j import GraphDatabase
 
-import random, sys
+import random
 
 uri = 'bolt://localhost:7687'
 driver = GraphDatabase.driver(uri, auth=('', ''))
@@ -33,7 +33,7 @@ with driver.session() as session:
     comp_list = list(companies)
     uni_list = list(universities)
 
-    print(authors, companies, universities)
+    print(comp_list, uni_list)
 affiliations = set()
 for author in authors:
     isCompany = bool(random.getrandbits(1))
