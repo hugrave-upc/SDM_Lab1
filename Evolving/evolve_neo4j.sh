@@ -12,12 +12,14 @@ add_uni_script="add_universities.cyph"
 add_rev_script="add_reviews.cyph"
 add_aff_script="add_affiliations.cyph"
 add_aff_python="addAffiliations.py"
+add_indexes_script="add_indexes.cyph"
 aff_csv="out_csv/affiliations.csv"
 
 if [[ ! ( -f "$add_comp_script" || \
             -f "$add_uni_script" || \
             -f "$add_rev_script" || \
-            -f "$add_aff_script" ) ]]
+            -f "$add_aff_script" || \
+            -f "$add_indexes_script" ) ]]
 then
     header "Cypher script files missing"
     exit 1
@@ -36,6 +38,11 @@ verify_result "Failed to load the companies in the graph."
 header "Loading universities..."
 cat "$add_uni_script" | cypher-shell
 verify_result "Failed to load the universities in the graph."
+
+# Load the indexes
+header "Load indexes..."
+cat "$add_indexes_script" | cypher-shell
+verify_result "Failed to load the indexes."
 
 # Loading the reviews in the graph
 header "Loading reviews..."
