@@ -1,4 +1,4 @@
 using periodic commit 10000
 load csv from 'file:///world-universities.csv' as line
 with line[1] as university, line[2] as url
-create (u:University {name: university, url: url})
+create (u:University {name: university, url: url});
