@@ -20,3 +20,19 @@ with conf.name as conf, author.name as Author, collect (distinct e) as numPub
 where size(numPub)>=4
 return conf as Conference, Author, numPub as Edition_Number
 ## return conf as Conference, collect({author:Author, editions_joined:numPub})
+
+# 4
+
+match (journal:Journal)-->(v:Volume)-->(year:Year), (v)-->(art:Article)-[c:Cites]-(:Article)
+with journal.journalID as journal, year.number as year, count(distinct art) as art_num, count (c) as citation_num
+order by journal, year
+with journal, collect(year) as years, collect([year, art_num, citation_num]) as journal_statistics
+unwind years as year
+with journal, year, [list in journal_statistics where list[0]<year] as prior_years
+with journal, year, prior_years[size(prior_years)-2..size(prior_years)] as prior_2years
+with journal, year,prior_2years[0][2]+prior_2years[1][2] as citations_2years, (prior_2years[0][1]+prior_2years[1][1]) as articles_2years, (1.0*prior_2years[0][2]+prior_2years[1][2])/(prior_2years[0][1]+prior_2years[1][1]) as impact_factor
+order by impact_factor asc
+return journal, year, 
+(case when citations_2years is null then 'not enough information' else citations_2years end) as citations_2years, 
+(case when articles_2years is null then 'not enough information' else articles_2years end) as articles_2years,
+(case when impact_factor is null then 'not enough information' else impact_factor end) as impact_factor
