@@ -2,3 +2,12 @@ Instantiating/out_csv/
 Instantiating/out_csv/*
 
 Evolving/out_csv/*
+edo_venv
+edo_venv/*
+
+.idea
+.idea/*
+
+venv/*
+venv
+
