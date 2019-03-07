@@ -33,7 +33,7 @@ with driver.session() as session:
     comp_list = list(companies)
     uni_list = list(universities)
 
-    print(comp_list, uni_list)
+    print(len(comp_list), len(uni_list))
 affiliations = set()
 for author in authors:
     isCompany = bool(random.getrandbits(1))
