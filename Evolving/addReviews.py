@@ -24,7 +24,6 @@ def setReview(tx, fields):
                     "set r.decision = {decision} "
                     "set r.description = {desc};",
                     reviewer=reviewer, articleID=articleID, decision=decision, desc=desc)
-    print(result)
 
 for review in reviews:
     fields = review.split(sep_value)
