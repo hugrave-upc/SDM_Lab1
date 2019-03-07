@@ -14,12 +14,12 @@ verify_result() {
 ## Parsing arguments
 POSITIONAL=()
 
-prepare_csv=$TRUE
+prepare_csv="$TRUE"
 while [[ $# -gt 0 ]]; do
-    key = "$1"
+    key="$1"
     case $key in
         --no-csv)
-        prepare_csv=$FALSE
+        prepare_csv="$FALSE"
     esac
 
 done
@@ -34,7 +34,7 @@ service neo4j stop
 verify_result "Failed to stop neo4j server"
 
 ## Running the CSV generation script
-if [[ $prepare_csv -eq $TRUE ]]; then
+if [[ "$prepare_csv" -eq "$TRUE" ]]; then
     echo "Creating the CSV files... This may require several minutes!"
     python convertingToCSV.py
     verify_result "Failed to convert sources to CSV"
