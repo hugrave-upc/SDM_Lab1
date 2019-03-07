@@ -5,7 +5,7 @@ with line[0] as companyHead, line[1] as cityHead
 limit 1
 load csv with headers from 'file:///companies.csv' as line
 fieldterminator '\t'
-with line[companyHead] as company_name, line[cityhead] as city_name
+with line[companyHead] as company_name, line[cityHead] as city_name
 create (comp:Company {name: company_name})
 with comp, city_name
 match (city:City {name: city_name})

@@ -1,9 +1,9 @@
 using periodic commit 10000
-load csv from 'file:///companies.csv' as line
+load csv from 'file:///reviews_summary.csv' as line
 fieldterminator '\t'
 with line[0] as reviewerHead, line[1] as articleIDHead, line[2] as decisionHead, line[3] as descHead
 limit 1
-load csv from 'file:///reviews_summary.csv' as line
+load csv with headers from 'file:///reviews_summary.csv' as line
 fieldterminator '\t'
 with line[reviewerHead] as reviewer, line[articleIDHead] as articleID, line[decisionHead] as decision, line[descHead] as description
 match (auth:Author {name: reviewer})-[r:Reviews]->(art:Article {articleID: articleID})
