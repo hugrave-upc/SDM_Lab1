@@ -1,0 +1,11 @@
+edo_venv
+edo_venv/*
+
+.idea
+.idea/*
+
+venv/*
+venv
+
+Instantiating/out_csv
+Instantiating/out_csv/*
