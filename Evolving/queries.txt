@@ -1,0 +1,8 @@
+load csv from 'file:///companies.csv' as line fieldterminator '\t'
+with line[0] as company_name, line[1] as city_name
+create (comp:Company {name: company_name})
+with comp, city_name
+match (city:City {name: city_name})
+create (comp)-[:In]->(city)
+return comp.name, city.name skip 1
+
