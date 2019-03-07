@@ -1,0 +1,9 @@
+using periodic commit 10000
+load csv from 'file:///affiliations.csv' as line fieldterminator '\t'
+with line[0] as authorHead, line[1] as instHead, line[2] as label, split(line[2], '|')[0] as compLabel, split(line[2], '|')[1] as uniLabel
+limit 1
+load csv with headers from 'file:///affiliations.csv' as line fieldterminator '\t'
+match (author:Author {name: line[authorHead]})
+with author, line[label] as label, line[instHead] as institution, compLabel, uniLabel
+foreach (ignoreMe in case when label = uniLabel then [1] else [] end | create (author)-[:Affiliated_to]->(:University {name: institution}))
+foreach (ignoreMe in case when label = compLabel then [1] else [] end | create (author)-[:Affiliated_to]->(c:Company {name: institution}))
