@@ -4,6 +4,7 @@ fake = Faker()
 
 # Global config variables
 sep_value = '\t'
+array_sep = '|'
 companies_number = 1000
 
 journal_papers_string = open('./sources/journal_papers.json', 'r').read()
@@ -53,6 +54,7 @@ reviews = set()
 # Extending data structures
 reviewsSummary = []
 
+
 # JOURNALS
 
 # Nodes
@@ -70,7 +72,7 @@ for jp in journal_papers_json:
     journals.add(journal + '\n')
 
     # Creating volume
-    volume = journal_paper['volume']
+    volume = array_sep.join([journal, journal_paper['volume']])
     volumes.add(volume + '\n')
 
     # Creating year
@@ -300,7 +302,7 @@ with codecs.open('./out_csv/vol_contains.csv', 'w', encoding='utf-8') as f:
     f.writelines(vol_contains)
 
 with codecs.open('./out_csv/volumes.csv', 'w', encoding='utf-8') as f:
-    f.write('number:ID(Volume)\n')
+    f.write('volumeID:ID(Volume)\n')
     f.writelines(volumes)
 
 with codecs.open('./out_csv/publishes.csv', 'w', encoding='utf-8') as f:
