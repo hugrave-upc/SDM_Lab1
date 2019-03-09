@@ -21,7 +21,7 @@ where id(a) = topArticle['Article']
 with Community, collect(distinct auth.name) as distinctTopAuthors, collect(auth.name) as TopAuthors
 unwind distinctTopAuthors as topAuthor
 with Community, topAuthor, size([a in TopAuthors where a=topAuthor]) as PapersWritten
-with Community, topAuthor, (case when PapersWritten > 1 then 'Guru' else 'Standard' end) as Status
+with Community, topAuthor, (case when PapersWritten > 1 then 'Guru' else 'Influencing' end) as Status
 with Community, Status, collect(topAuthor) as topAuthors
 return Community, collect({Category: Status, Authors: topAuthors}) as TopAuthors;
 """
