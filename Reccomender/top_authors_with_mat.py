@@ -29,7 +29,7 @@ with driver.session() as session:
     for ta in topAuthors:
         print ('===============')
         print (ta['Community'])
-        print('\n'.join([x['Category'] + ' -> ' + ', '.join(x['Authors']) for x in ta['TopAuthors']]))
+        print('\n\n'.join([x['Category'] + ' -> ' + ', '.join(x['Authors']) for x in ta['TopAuthors']]))
         print('')
 
     #print ('\n'.join([tp['Community'] + ' - ' + ', '.join(['(' + ta['Article'] + ', ' + str(ta['score']) + ')' for ta in tp['TopArticles']]) for tp in topPapers]))
