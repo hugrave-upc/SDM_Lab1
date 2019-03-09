@@ -257,10 +257,9 @@ for artInfo in journal_papers_json + conferences_json:
     addReviewsSummary(article_id, reviewers)
 
     # Adding citations
-
     while numCitation > 0:
         cited = secure_random.choice(articles).split(sep_value)[0]
-        if article_id != cited and article['year'] >= article_year[cited]:
+        if article_id != cited and int(cited) in article_year and article['year'] >= article_year[int(cited)]:
             cites.add(sep_value.join([article_id, cited + '\n']))
             numCitation -= 1
 
