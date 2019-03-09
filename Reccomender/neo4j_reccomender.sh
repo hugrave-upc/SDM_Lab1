@@ -22,9 +22,8 @@ fi
 
 which cypher-shell > /dev/null
 verify_result "Impossible to use cypher-shell."
-echo $1
-exit 1
-if [[ ! ( -z "$1" && "$1" -eq "skip" ) ]]; then
+
+if [[ -z "$1" || ! "$1" -eq "skip" ]]; then
 
     # Create the communities
     header "Create communities..."
