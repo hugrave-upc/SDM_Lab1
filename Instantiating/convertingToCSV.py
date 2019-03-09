@@ -60,6 +60,7 @@ in_year_ed = set()
 has = set()
 cites = set()
 reviews = set()
+article_year = {}
 
 
 # Extending data structures
@@ -89,6 +90,7 @@ for jp in journal_papers_json:
     # Creating year
     year = journal_paper['year']
     years.add(year + '\n')
+    article_year[articleID] = year
 
     # Creating author
     journal_authors = journal_paper['authors']
@@ -192,6 +194,7 @@ for conf in conferences_json:
     # Creating years
     year = conf_paper['year']
     years.add(year + '\n')
+    article_year[articleID] = year
 
     # Creating keywords
     numberWords = int(np.random.normal(mean, std))
@@ -257,7 +260,7 @@ for artInfo in journal_papers_json + conferences_json:
 
     while numCitation > 0:
         cited = secure_random.choice(articles).split(sep_value)[0]
-        if article_id != cited:
+        if article_id != cited and article['year'] >= article_year[cited]:
             cites.add(sep_value.join([article_id, cited + '\n']))
             numCitation -= 1
 
