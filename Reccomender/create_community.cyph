@@ -1,0 +1,37 @@
+create (:Community {name: 'Database'})
+create (:Community {name: "Security Systems"})
+create (:Community {name: "Computer engineer"})
+create (:Community {name: "Network"})
+create (:Community {name: "Theoretical computer science"});
+
+create index on :Community(name);
+
+match (k:Keyword)
+where k.name in ['data management', 'data', 'indexing', 'big data', 'data querying', 'processing', 'data storage', 'data modeling']
+with k
+match (c:Community {name: 'Database'})
+create (k)-[:belongs_to]->(c);
+
+match (k:Keyword)
+where k.name in ['TCP/IP', 'model simple security condition', 'trusted subject', 'security', 'security policy', 'secure computer system']
+with k
+match (c:Community {name: 'Security Systems'})
+create (k)-[:belongs_to]->(c);
+
+match (k:Keyword)
+where k.name in ['Software', 'Hardware', 'TCP/IP', 'processing', 'RAM', 'ROM']
+with k
+match (c:Community {name: 'Computer engineer'})
+create (k)-[:belongs_to]->(c);
+
+match (k:Keyword)
+where k.name in ['TCP/IP', 'model simple security condition', 'asterisk-property', 'star property']
+with k
+match (c:Community {name: 'Network'})
+create (k)-[:belongs_to]->(c);
+
+match (k:Keyword)
+where k.name in ['processing', 'model simple security condition', 'mathematical model', 'data modeling']
+with k
+match (c:Community {name: 'Theoretical computer science'})
+create (k)-[:belongs_to]->(c);
