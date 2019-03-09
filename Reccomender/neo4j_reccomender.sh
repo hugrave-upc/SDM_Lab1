@@ -40,7 +40,7 @@ fi
 
 
 WITH_MAT=False
-while [[ "$WITH_MAT" -eq "False" ]]; do
+while [[ "$WITH_MAT" == "False" ]]; do
     print_line
     echo "Materialize the top articles? (Y|n)"
     read answer
@@ -56,7 +56,7 @@ while [[ "$WITH_MAT" -eq "False" ]]; do
     esac
 
     header "Finding top authors for each community:"
-    if [[ "$WITH_MAT" -eq "True" ]]; then
+    if [ "$WITH_MAT" == "True" ]; then
         echo "With materialization"
         sleep 1
         python "$top_authors_with_mat"
