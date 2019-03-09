@@ -1,0 +1,13 @@
+match (conf:Conference)-->(:Edition)-[:Contains]->(:Article)-[:Has]->(totK:Keyword)
+with conf, count(totK) as totalKeywords
+match (conf)-->(e:Edition)-[:Contains]->(:Article)-[:Has]->(k:Keyword)-->(comm:Community)
+with conf, comm, toFloat(count(k)) / totalKeywords as belonginess_factor
+where belonginess_factor >= 0.2
+create (conf)-[:Related_to]->(comm);
+
+match (jou:Journal)-->(:Volume)-[:Contains]->(:Article)-[:Has]->(totK:Keyword)
+with jou, count(totK) as totalKeywords
+match (jou)-->(:Volume)-[:Contains]->(:Article)-[:Has]->(k:Keyword)-->(comm:Community)
+with jou, comm, toFloat(count(k)) / totalKeywords as belonginess_factor
+where belonginess_factor >= 0.2
+create (jou)-[:Related_to]->(comm);

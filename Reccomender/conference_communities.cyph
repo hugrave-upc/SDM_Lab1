@@ -1,5 +1,0 @@
-match (conf:Conference)-->(:Edition)-[:Contains]->(:Article)-[:Has]->(totK:Keyword)
-with conf, count(totK) as totalKeywords
-match (conf)-->(e:Edition)-[:Contains]->(:Article)-[:Has]->(k:Keyword)-->(comm:Community)
-return conf.name, comm.name, toFloat(count(k)) / totalKeywords as percentage order by percentage desc
-limit 10;
