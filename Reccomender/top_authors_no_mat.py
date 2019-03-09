@@ -37,6 +37,7 @@ def get_top_papers(tx, communities):
         result += list(tx.run(topArticles.replace('$CommunityName', comm['name'], 1), CommunityName=comm['name']))
     return result
 
+print ('Getting the top authors...')
 with driver.session() as session:
     communities = session.read_transaction(get_communities)
     topPapers = session.read_transaction(get_top_papers, communities)
