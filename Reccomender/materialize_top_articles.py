@@ -4,10 +4,10 @@ from neo4j import GraphDatabase
 uri = 'bolt://localhost:7687'
 driver = GraphDatabase.driver(uri, auth=('', ''))
 
-if not sys.argv[0]:
+if not sys.argv[1]:
     numberTopArt = 10
 else:
-    numberTopArt = int(sys.argv[0])
+    numberTopArt = int(sys.argv[1])
 
 
 topArticles = """
