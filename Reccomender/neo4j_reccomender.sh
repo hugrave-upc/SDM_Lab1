@@ -57,8 +57,12 @@ while [[ "$WITH_MAT" -eq "False" ]]; do
 
     header "Finding top authors for each community:"
     if [[ "$WITH_MAT" -eq "True" ]]; then
+        echo "With materialization"
+        sleep 1
         python "$top_authors_with_mat"
     else
+        echo "Without materialization"
+        sleep 1
         python "$top_authors_no_mat"
     fi
 done
