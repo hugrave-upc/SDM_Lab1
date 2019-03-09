@@ -1,8 +1,14 @@
-
+import sys
 from neo4j import GraphDatabase
 
 uri = 'bolt://localhost:7687'
 driver = GraphDatabase.driver(uri, auth=('', ''))
+
+if not sys.argv[0]:
+    numberTopArt = 10
+else:
+    numberTopArt = sys.argv[0]
+
 
 topArticles = """
 call algo.pageRank.stream(
@@ -14,7 +20,7 @@ yield nodeId, score
 match (art:Article)
 where id(art) = nodeId
 with art, score order by score desc
-with $CommunityName as Community, collect ({Article: id(art), score: score})[0..10] as TopArticles
+with $CommunityName as Community, collect ({Article: id(art), score: score})[0..$numberTopArt] as TopArticles
 unwind TopArticles as topArticle
 match (art:Article), (c:Community {name: $CommunityName}) where id(art) = topArticle['Article']
 merge (art)<-[:Top {score: topArticle['score']}]-(c)
@@ -27,7 +33,9 @@ def get_communities(tx):
 
 def materialize_top_papers(tx, communities):
     for comm in communities:
-        tx.run(topArticles.replace('$CommunityName', comm['name'], 1), CommunityName=comm['name'])
+        tx.run(topArticles.replace('$CommunityName', comm['name'], 1),
+               CommunityName=comm['name'],
+               NumberTopArt=numberTopArt)
 
 with driver.session() as session:
     communities = session.read_transaction(get_communities)

@@ -1,8 +1,13 @@
-
+import os, sys
 from neo4j import GraphDatabase
 
 uri = 'bolt://localhost:7687'
 driver = GraphDatabase.driver(uri, auth=('', ''))
+
+if not sys.argv[0]:
+    numberTopArt = 10
+else:
+    numberTopArt = sys.argv[0]
 
 topArticles = """
 call algo.pageRank.stream(
@@ -14,7 +19,7 @@ yield nodeId, score
 match (art:Article)
 where id(art) = nodeId
 with art, score order by score desc
-with $CommunityName as Community, collect ({Article: id(art), score: score})[0..10] as TopArticles
+with $CommunityName as Community, collect ({Article: id(art), score: score})[0..$NumberTopArt] as TopArticles
 unwind TopArticles as topArticle
 match (a:Article)<-[:Writes]-(auth:Author)
 where id(a) = topArticle['Article']
@@ -34,7 +39,9 @@ def get_communities(tx):
 def get_top_papers(tx, communities):
     result = []
     for comm in communities:
-        result += list(tx.run(topArticles.replace('$CommunityName', comm['name'], 1), CommunityName=comm['name']))
+        result += list(tx.run(topArticles.replace('$CommunityName', comm['name'], 1),
+                              CommunityName=comm['name'],
+                              NumberTopArt=numberTopArt))
     return result
 
 print ('Getting the top authors...')

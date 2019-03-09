@@ -35,34 +35,34 @@ if [[ -z "$1" || ! "$1" -eq "skip" ]]; then
     cat "$related_community_script" | cypher-shell
     verify_result "Impossible to relate conferences and journals to communities"
 
+    header "Materializing top Articles per community"
+    python "$materialize_top_articles"
+    verify_result "Impossible to materialize the top articles."
+
 fi
 
 
 
-WITH_MAT=False
-while [ "$WITH_MAT" == "False" ]; do
+STOP=False
+while [[ "$STOP" == "False" ]]; do
+
     print_line
-    echo "Materialize the top articles? (Y|n)"
+    echo "Use materialization? (Y|n) 'exit' to stop"
     read answer
+    read -p "Number of top articles: " numberTopArt
     case "$answer" in
-        n)
+        n|N|no|NO|No)
+            echo "Top authors without materialization"
+            time python "$top_authors_no_mat" "$numberTopArt"
         ;;
-        *)
-        WITH_MAT=True
-        header "Materializing top Articles per community"
-        python "$materialize_top_articles"
-        verify_result "Impossible to materialize the top articles."
+        y|Y|yes|YES|Yes)
+            echo "Top authors with materialization"
+            time python "$top_authors_with_mat" "$numberTopArt"
+        ;;
+        exit|*)
+            header "Exiting..."
+            STOP=True
         ;;
     esac
 
-    header "Finding top authors for each community:"
-    if [ "$WITH_MAT" == "True" ]; then
-        echo "With materialization"
-        sleep 1
-        time python "$top_authors_with_mat"
-    else
-        echo "Without materialization"
-        sleep 1
-        time python "$top_authors_no_mat"
-    fi
 done

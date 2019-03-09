@@ -4,14 +4,14 @@ match (author:Author)-[:Writes]->(art:Article)<-[c:Cites]-(:Article)
 with author, art, count(c) as numbOfCitations
 order by author, numbOfCitations desc
 with author, collect(numbOfCitations) as artCit
-return author.name, artCit, size([pos in range(1,size(artCit)) where artCit[pos-1] >= pos]) as h_index
+return author.name, artCit, size([pos in range(1,size(artCit)) where artCit[pos-1] >= pos]) as h_index;
 
 # 2
 
 match (conf:Conference)-->(:Edition)-->(art:Article)<-[c:Cites]-()
 with conf, art, count(c) as citations
 order by conf, citations desc
-return conf, collect({article:art.title, cit:citations})[0..3] as listCit
+return conf, collect({article:art.title, cit:citations})[0..3] as listCit;
 
 # 3
 
@@ -19,7 +19,7 @@ match (author:Author)-[:Writes]->(art:Article)<-[:Contains]-(e:Edition)<-[:Has_a
 with conf.name as conf, author.name as Author, collect (distinct e) as numPub
 where size(numPub)>=4
 return conf as Conference, Author, numPub as Edition_Number
-## return conf as Conference, collect({author:Author, editions_joined:numPub})
+## return conf as Conference, collect({author:Author, editions_joined:numPub});
 
 # 4
 
@@ -35,4 +35,4 @@ order by impact_factor asc
 return journal, year, 
 (case when citations_2years is null then 'not enough information' else citations_2years end) as citations_2years, 
 (case when articles_2years is null then 'not enough information' else articles_2years end) as articles_2years,
-(case when impact_factor is null then 'not enough information' else impact_factor end) as impact_factor
+(case when impact_factor is null then 'not enough information' else impact_factor end) as impact_factor;
