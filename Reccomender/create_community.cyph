@@ -1,37 +1,44 @@
 create (:Community {name: 'Database'})
-create (:Community {name: "Security Systems"})
-create (:Community {name: "Computer engineer"})
-create (:Community {name: "Network"})
-create (:Community {name: "Theoretical computer science"});
+create (:Community {name: "IOT"})
+create (:Community {name: "Internet security"})
+create (:Community {name: "Bioinformatics"})
+create (:Community {name: "Quantum computing"})
+create (:Community {name: "Machine Learning"});
 
 create index on :Community(name);
 
 match (k:Keyword)
-where k.name in ['data management', 'data', 'indexing', 'big data', 'data querying', 'processing', 'data storage', 'data modeling']
+where k.name in ['Big data', 'Databases', 'Data modeling', 'Data storage', 'Semantic data']
 with k
 match (c:Community {name: 'Database'})
 create (k)-[:belongs_to]->(c);
 
 match (k:Keyword)
-where k.name in ['TCP/IP', 'model simple security condition', 'trusted subject', 'security', 'security policy', 'secure computer system']
+where k.name in ['IOT', 'Sensors', 'Real time', 'Streams', 'Connection']
 with k
-match (c:Community {name: 'Security Systems'})
+match (c:Community {name: 'IOT'})
 create (k)-[:belongs_to]->(c);
 
 match (k:Keyword)
-where k.name in ['Software', 'Hardware', 'TCP/IP', 'processing', 'RAM', 'ROM']
+where k.name in ['Cybersecurity', 'Protocols', 'Tokens', 'Authentication', 'Encryption']
 with k
-match (c:Community {name: 'Computer engineer'})
+match (c:Community {name: 'Internet security'})
 create (k)-[:belongs_to]->(c);
 
 match (k:Keyword)
-where k.name in ['TCP/IP', 'model simple security condition', 'asterisk-property', 'star property']
+where k.name in ['Bioinformatics', 'Genetic programming', 'Biology', 'DNA', 'Cancer']
 with k
-match (c:Community {name: 'Network'})
+match (c:Community {name: 'Bioinformatics'})
 create (k)-[:belongs_to]->(c);
 
 match (k:Keyword)
-where k.name in ['processing', 'model simple security condition', 'mathematical model', 'data modeling']
+where k.name in ['Quantum', 'Physics', 'QBit', 'Combinatorics', 'Entanglement']
 with k
-match (c:Community {name: 'Theoretical computer science'})
+match (c:Community {name: 'Quantum computing'})
+create (k)-[:belongs_to]->(c);
+
+match (k:Keyword)
+where k.name in ['AI', 'Machine Learning', 'Classification', 'Deep Learning', 'Clustering']
+with k
+match (c:Community {name: 'Machine Learning'})
 create (k)-[:belongs_to]->(c);
