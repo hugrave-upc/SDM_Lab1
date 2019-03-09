@@ -130,7 +130,7 @@ for jp in journal_papers_json:
     vol_contains.append(sep_value.join([volume, pages, str(articleID-1) + '\n']))
 
     # Publishes: journal -> volume
-    publishes.add(sep_value.join([journal, volume + '\n']))
+    publishes.add(sep_value.join([journal, year, volume + '\n']))
 
     # In_year_vol: volume -> year
     in_year_vol.add(sep_value.join([volume, year + '\n']))
@@ -209,7 +209,7 @@ for conf in conferences_json:
     proc_contains.append(sep_value.join([edition, pages, str(articleID-1) + '\n']))
 
     # Has_an: conference -> edition
-    has_an.add(sep_value.join([conference, edition + '\n']))
+    has_an.add(sep_value.join([conference, year, edition + '\n']))
 
     # In_year_ed
     in_year_ed.add(sep_value.join([edition, year + '\n']))
@@ -297,7 +297,7 @@ with codecs.open('./out_csv/volumes.csv', 'w', encoding='utf-8') as f:
     f.writelines(volumes)
 
 with codecs.open('./out_csv/publishes.csv', 'w', encoding='utf-8') as f:
-    f.write(sep_value.join([':START_ID(Journal)', ':END_ID(Volume)\n']))
+    f.write(sep_value.join([':START_ID(Journal)', 'year', ':END_ID(Volume)\n']))
     f.writelines(publishes)
 
 with codecs.open('./out_csv/in_year_vol.csv', 'w', encoding='utf-8') as f:
@@ -325,7 +325,7 @@ with codecs.open('./out_csv/proc_contains.csv', 'w', encoding='utf-8') as f:
     f.writelines(proc_contains)
 
 with codecs.open('./out_csv/has_an.csv', 'w', encoding='utf-8') as f:
-    f.write(sep_value.join([':START_ID(Conference)', ':END_ID(Edition)\n']))
+    f.write(sep_value.join([':START_ID(Conference)', 'year', ':END_ID(Edition)\n']))
     f.writelines(has_an)
 
 with codecs.open('./out_csv/occurs_in.csv', 'w', encoding='utf-8') as f:
