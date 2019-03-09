@@ -22,6 +22,7 @@ def get_communities(tx):
 def get_top_authors(tx):
     return tx.run(topAuthors)
 
+print ('Getting the top authors...')
 with driver.session() as session:
     communities = session.read_transaction(get_communities)
     topAuthors = session.read_transaction(get_top_authors)
