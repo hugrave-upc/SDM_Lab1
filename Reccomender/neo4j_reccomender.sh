@@ -40,7 +40,7 @@ fi
 
 
 WITH_MAT=False
-while [[ "$WITH_MAT" == "False" ]]; do
+while [ "$WITH_MAT" == "False" ]; do
     print_line
     echo "Materialize the top articles? (Y|n)"
     read answer
@@ -59,10 +59,10 @@ while [[ "$WITH_MAT" == "False" ]]; do
     if [ "$WITH_MAT" == "True" ]; then
         echo "With materialization"
         sleep 1
-        python "$top_authors_with_mat"
+        time python "$top_authors_with_mat"
     else
         echo "Without materialization"
         sleep 1
-        python "$top_authors_no_mat"
+        time python "$top_authors_no_mat"
     fi
 done
