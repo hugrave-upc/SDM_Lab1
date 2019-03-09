@@ -20,19 +20,24 @@ then
     exit 1
 fi
 
-
 which cypher-shell > /dev/null
 verify_result "Impossible to use cypher-shell."
 
-# Create the communities
-header "Create communities..."
-cat "$create_community_script" | cypher-shell
-verify_result "Impossible to create communities"
+if [[ ! ( -z "$1" && "$1" -eq "skip" ) ]]; then
 
-# Relate Conferences/Journals to communities
-header "Relate Conferences/Journals to communities"
-cat "$related_community_script" | cypher-shell
-verify_result "Impossible to relate conferences and journals to communities"
+    # Create the communities
+    header "Create communities..."
+    cat "$create_community_script" | cypher-shell
+    verify_result "Impossible to create communities"
+
+    # Relate Conferences/Journals to communities
+    header "Relate Conferences/Journals to communities"
+    cat "$related_community_script" | cypher-shell
+    verify_result "Impossible to relate conferences and journals to communities"
+
+fi
+
+
 
 WITH_MAT=False
 while [[ "$WITH_MAT" -eq "False" ]]; do
