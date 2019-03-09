@@ -1,13 +1,13 @@
-match (conf:Conference)-->(:Edition)-[:Contains]->(:Article)-[:Has]->(totK:Keyword)
-with conf, count(totK) as totalKeywords
-match (conf)-->(e:Edition)-[:Contains]->(:Article)-[:Has]->(k:Keyword)-->(comm:Community)
-with conf, comm, toFloat(count(k)) / totalKeywords as belonginess_factor
-where belonginess_factor >= 0.2
+match (conf:Conference)-->(:Edition)-[:Contains]->(art:Article)
+with conf, count(art) as totalArt
+match (conf)-->(:Edition)-[:Contains]->(art:Article)-[:Has]->(:Keyword)-->(comm:Community)
+with conf, comm, toFloat(count(distinct art)) / totalArt as belonginess_factor
+where belonginess_factor >= 0.5
 create (conf)-[:Related_to]->(comm);
 
-match (jou:Journal)-->(:Volume)-[:Contains]->(:Article)-[:Has]->(totK:Keyword)
-with jou, count(totK) as totalKeywords
-match (jou)-->(:Volume)-[:Contains]->(:Article)-[:Has]->(k:Keyword)-->(comm:Community)
-with jou, comm, toFloat(count(k)) / totalKeywords as belonginess_factor
-where belonginess_factor >= 0.2
+match (jou:Journal)-->(:Volume)-[:Contains]->(art:Article)
+with jou, count(art) as totalArt
+match (jou)-->(:Volume)-[:Contains]->(art:Article)-[:Has]->(:Keyword)-->(comm:Community)
+with jou, comm, toFloat(count(distinct art)) / totalArt as belonginess_factor
+where belonginess_factor >= 0.5
 create (jou)-[:Related_to]->(comm);
