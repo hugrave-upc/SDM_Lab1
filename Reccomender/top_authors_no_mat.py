@@ -7,7 +7,7 @@ driver = GraphDatabase.driver(uri, auth=('', ''))
 if not sys.argv[0]:
     numberTopArt = 10
 else:
-    numberTopArt = sys.argv[0]
+    numberTopArt = int(sys.argv[0])
 
 topArticles = """
 call algo.pageRank.stream(

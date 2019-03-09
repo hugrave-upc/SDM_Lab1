@@ -35,8 +35,10 @@ if [[ -z "$1" || ! "$1" -eq "skip" ]]; then
     cat "$related_community_script" | cypher-shell
     verify_result "Impossible to relate conferences and journals to communities"
 
+
     header "Materializing top Articles per community"
-    python "$materialize_top_articles"
+    read -p "Number of top articles: " numberTopArt
+    python "$materialize_top_articles" "$numberTopArt"
     verify_result "Impossible to materialize the top articles."
 
 fi
@@ -49,15 +51,15 @@ while [[ "$STOP" == "False" ]]; do
     print_line
     echo "Use materialization? (Y|n) 'exit' to stop"
     read answer
-    read -p "Number of top articles: " numberTopArt
     case "$answer" in
         n|N|no|NO|No)
+            read -p "Number of top articles: " numberTopArt
             echo "Top authors without materialization"
             time python "$top_authors_no_mat" "$numberTopArt"
         ;;
         y|Y|yes|YES|Yes)
             echo "Top authors with materialization"
-            time python "$top_authors_with_mat" "$numberTopArt"
+            time python "$top_authors_with_mat"
         ;;
         exit|*)
             header "Exiting..."
