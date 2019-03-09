@@ -45,7 +45,7 @@ while [[ "$WITH_MAT" -eq "False" ]]; do
     echo "Materialize the top articles? (Y|n)"
     read answer
     case "$answer" in
-        N|n|no|No|NO)
+        n)
         ;;
         *)
         WITH_MAT=True
