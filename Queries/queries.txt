@@ -23,8 +23,8 @@ return conf as Conference, Author, numPub as Edition_Number
 
 # 4
 
-match (journal:Journal)-->(v:Volume)-->(year:Year), (v)-->(art:Article)-[c:Cites]-(:Article)
-with journal.journalID as journal, year.number as year, count(distinct art) as art_num, count (c) as citation_num
+match (journal:Journal)-[p:Publishes]->(v:Volume), (v)-->(art:Article)-[c:Cites]-(:Article)
+with journal.journalID as journal, p.year as year, count(distinct art) as art_num, count (c) as citation_num
 order by journal, year
 with journal, collect(year) as years, collect([year, art_num, citation_num]) as journal_statistics
 unwind years as year
