@@ -34,6 +34,15 @@ keywordsComm = ['data management', 'indexing', 'data modeling', 'big data', 'dat
 randomKeywords = ['Software', 'Hardware', 'TCP/IP','ROM','RAM', 'security policy', 'model simple security condition', 'star property', 'asterisk-property',
                 'mathematical model', 'secure computer system', 'security', 'trusted subject']
 
+randomKeywords = \
+['Big data', 'Databases', 'Data modeling', 'Data storage', 'Semantic data'] + \
+['IOT', 'Sensors', 'Real time', 'Streams', 'Connection'] + \
+['Cybersecurity', 'Protocols', 'Tokens', 'Authentication', 'Encryption'] + \
+['Bioinformatics', 'Genetic programming', 'Biology', 'DNA', 'Cancer'] + \
+['Quantum', 'Physics', 'QBit', 'Combinatorics', 'Entanglement'] + \
+['AI', 'Machine Learning', 'Classification', 'Deep Learning', 'Clustering']
+
+
 
 # Creating relations
 
@@ -100,24 +109,14 @@ for jp in journal_papers_json:
         writes.append(sep_value.join([author, 'Yes', str(articleID - 1) + '\n']))
 
     # Creating keywords
-    if random.randint(0,1) == 1:
-        numberWords = random.randint(1,8)
-        while numberWords > 0:
-            secure_random = random.SystemRandom()
-            keyword = secure_random.choice(keywordsComm)
-            keywords.add(keyword+ '\n')
-            # Has = article -> keyword
-            has.add(sep_value.join([str(articleID-1), keyword + '\n']))
-            numberWords -= 1
-    else:
-        numberWords = random.randint(1,8)
-        while numberWords > 0:
-            secure_random = random.SystemRandom()
-            keyword = secure_random.choice(randomKeywords)
-            keywords.add(keyword+ '\n')
-            # Has = article -> keyword
-            has.add(sep_value.join([str(articleID-1), keyword + '\n']))
-            numberWords -= 1
+    numberWords = random.randint(1, 6)
+    while numberWords > 0:
+        secure_random = random.SystemRandom()
+        keyword = secure_random.choice(randomKeywords)
+        keywords.add(keyword + '\n')
+        # Has = article -> keyword
+        has.add(sep_value.join([str(articleID - 1), keyword + '\n']))
+        numberWords -= 1
 
 
 
@@ -193,24 +192,14 @@ for conf in conferences_json:
     years.add(year + '\n')
 
     # Creating keywords
-    if random.randint(0,1) == 1:
-        numberWords = random.randint(1,8)
-        while numberWords > 0:
-            secure_random = random.SystemRandom()
-            keyword = secure_random.choice(keywordsComm)
-            keywords.add(keyword + '\n')
-            # Has = article -> keyword
-            has.add(sep_value.join([str(articleID-1), keyword + '\n']))
-            numberWords -= 1
-    else:
-        numberWords = random.randint(1,8)
-        while numberWords > 0:
-            secure_random = random.SystemRandom()
-            keyword = secure_random.choice(keywordsComm)
-            keywords.add(keyword + '\n')
-            # Has = article -> keyword
-            has.add(sep_value.join([str(articleID-1), keyword + '\n']))
-            numberWords -= 1
+    numberWords = random.randint(1, 6)
+    while numberWords > 0:
+        secure_random = random.SystemRandom()
+        keyword = secure_random.choice(randomKeywords)
+        keywords.add(keyword + '\n')
+        # Has = article -> keyword
+        has.add(sep_value.join([str(articleID - 1), keyword + '\n']))
+        numberWords -= 1
 
 # Edges
 
