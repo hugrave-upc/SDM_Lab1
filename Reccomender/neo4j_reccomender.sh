@@ -52,8 +52,8 @@ while [[ "$WITH_MAT" -eq "False" ]]; do
 
     header "Finding top authors for each community:"
     if [[ "$WITH_MAT" -eq "True" ]]; then
-        time python "$top_authors_with_mat"
+        python "$top_authors_with_mat"
     else
-        time python "$top_authors_no_mat"
+        python "$top_authors_no_mat"
     fi
 done
