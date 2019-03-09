@@ -2,10 +2,13 @@ import json, random, codecs, os
 from faker import Faker
 fake = Faker()
 
+import numpy as np
+
 # Global config variables
 sep_value = '\t'
 array_sep = '|'
 companies_number = 1000
+mean, std = 4, 2
 
 journal_papers_string = open('./sources/journal_papers.json', 'r').read()
 conferences_string = open('./sources/conferences.json', 'r').read()
@@ -41,7 +44,6 @@ randomKeywords = \
 ['Bioinformatics', 'Genetic programming', 'Biology', 'DNA', 'Cancer'] + \
 ['Quantum', 'Physics', 'QBit', 'Combinatorics', 'Entanglement'] + \
 ['AI', 'Machine Learning', 'Classification', 'Deep Learning', 'Clustering']
-
 
 
 # Creating relations
@@ -109,7 +111,7 @@ for jp in journal_papers_json:
         writes.append(sep_value.join([author, 'Yes', str(articleID - 1) + '\n']))
 
     # Creating keywords
-    numberWords = random.randint(1, 6)
+    numberWords = int(np.random.normal(mean, std))
     while numberWords > 0:
         secure_random = random.SystemRandom()
         keyword = secure_random.choice(randomKeywords)
@@ -192,7 +194,7 @@ for conf in conferences_json:
     years.add(year + '\n')
 
     # Creating keywords
-    numberWords = random.randint(1, 6)
+    numberWords = int(np.random.normal(mean, std))
     while numberWords > 0:
         secure_random = random.SystemRandom()
         keyword = secure_random.choice(randomKeywords)
