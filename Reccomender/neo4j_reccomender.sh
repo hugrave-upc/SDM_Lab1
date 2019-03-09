@@ -20,19 +20,24 @@ then
     exit 1
 fi
 
-
 which cypher-shell > /dev/null
 verify_result "Impossible to use cypher-shell."
 
-# Create the communities
-header "Create communities..."
-cat "$create_community_script" | cypher-shell
-verify_result "Impossible to create communities"
+if [[ ! ( -z "$1" && "$1" -eq "skip" ) ]]; then
 
-# Relate Conferences/Journals to communities
-header "Relate Conferences/Journals to communities"
-cat "$related_community_script" | cypher-shell
-verify_result "Impossible to relate conferences and journals to communities"
+    # Create the communities
+    header "Create communities..."
+    cat "$create_community_script" | cypher-shell
+    verify_result "Impossible to create communities"
+
+    # Relate Conferences/Journals to communities
+    header "Relate Conferences/Journals to communities"
+    cat "$related_community_script" | cypher-shell
+    verify_result "Impossible to relate conferences and journals to communities"
+
+fi
+
+
 
 WITH_MAT=False
 while [[ "$WITH_MAT" -eq "False" ]]; do
@@ -52,8 +57,8 @@ while [[ "$WITH_MAT" -eq "False" ]]; do
 
     header "Finding top authors for each community:"
     if [[ "$WITH_MAT" -eq "True" ]]; then
-        time python "$top_authors_with_mat"
+        python "$top_authors_with_mat"
     else
-        time python "$top_authors_no_mat"
+        python "$top_authors_no_mat"
     fi
 done
