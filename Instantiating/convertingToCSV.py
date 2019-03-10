@@ -272,9 +272,9 @@ if not os.path.isfile('./out_csv/companies.csv'):
         companies.append(sep_value.join([fake.company(), random.choice(randomCities) + '\n']))
 
 # Adding a city to the univeristy
-with open('./out_csv/world-universities.csv') as f:
+with open('./out_csv/world-universities.csv', 'r') as f:
     lines = f.readlines()
-    universities = [sep_value.join([x[1], random.choice(randomCities), x[2] + '\n']) for x in lines]
+    universities = [sep_value.join([x.split(',')[1], random.choice(randomCities), x.split(',')[2] + '\n']) for x in lines]
 
 
 # Creating CSVs
