@@ -1,4 +1,11 @@
 using periodic commit 10000
 load csv from 'file:///world-universities.csv' as line
-with line[1] as university, line[2] as url
-create (u:University {name: university, url: url});
+fieldterminator '\t'
+with line[0] as uniHead, line[1] as cityHead, line[2] as urlHead
+limit 1
+load csv from 'file:///world-universities.csv' as line
+fieldterminator '\t'
+with line[uniHead] as university, line[urlHead] as url, line[cityHead] as city
+match (c:City {name: city})
+create (u:University {name: university, url: url})-[:Located_in]->(c);
+

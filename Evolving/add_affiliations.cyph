@@ -5,5 +5,7 @@ limit 1
 load csv with headers from 'file:///affiliations.csv' as line fieldterminator '\t'
 match (author:Author {name: line[authorHead]})
 with author, line[label] as label, line[instHead] as institution, compLabel, uniLabel
-foreach (ignoreMe in case when label = uniLabel then [1] else [] end | create (author)-[:Affiliated_to]->(:University {name: institution}))
-foreach (ignoreMe in case when label = compLabel then [1] else [] end | create (author)-[:Affiliated_to]->(c:Company {name: institution}));
+match (uni:University {name: institution})
+match (com:Company {name: institution})
+foreach (ignoreMe in case when label = uniLabel then [1] else [] end | create (author)-[:Affiliated_to]->(uni)
+foreach (ignoreMe in case when label = compLabel then [1] else [] end | create (author)-[:Affiliated_to]->(comp);

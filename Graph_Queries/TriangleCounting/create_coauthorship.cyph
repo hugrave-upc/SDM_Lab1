@@ -1,0 +1,3 @@
+match (a1:Author)-[:Writes]->(art:Article)<-[:Writes]-(a2:Author)
+where not (a1)-[:Co:_author]-(a2)
+create (a1)-[:Co_author]->(a2);
