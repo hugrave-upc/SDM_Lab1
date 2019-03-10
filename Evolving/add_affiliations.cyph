@@ -8,4 +8,4 @@ with author, line[label] as label, line[instHead] as institution, compLabel, uni
 optional match (uni:University {name: institution})
 optional match (com:Company {name: institution})
 foreach (ignoreMe in case when label = uniLabel then [1] else [] end | create (author)-[:Affiliated_to]->(uni))
-foreach (ignoreMe in case when label = compLabel then [1] else [] end | create (author)-[:Affiliated_to]->(comp));
+foreach (ignoreMe in case when label = compLabel then [1] else [] end | create (author)-[:Affiliated_to]->(com));
