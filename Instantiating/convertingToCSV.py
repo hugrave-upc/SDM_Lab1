@@ -1,6 +1,7 @@
 import json, random, codecs, os
 from faker import Faker
 fake = Faker()
+import csv
 
 import numpy as np
 
@@ -272,9 +273,11 @@ if not os.path.isfile('./out_csv/companies.csv'):
         companies.append(sep_value.join([fake.company(), random.choice(randomCities) + '\n']))
 
 # Adding a city to the univeristy
-with open('./out_csv/world-universities.csv', 'r') as f:
-    lines = f.readlines()
-    universities = [sep_value.join([x.split(',')[1], random.choice(randomCities), x.split(',')[2] + '\n']) for x in lines]
+with codecs.open('./out_csv/world-universities.csv', 'r', encoding='utf-8') as f:
+    lines = csv.reader(f, delimiter=',')
+    universities = []
+    for x in lines:
+        universities.append(sep_value.join([x[1], random.choice(randomCities), x[2] + '\n']))
 
 
 # Creating CSVs
@@ -368,7 +371,7 @@ if not os.path.isfile('./out_csv/companies.csv'):
         f.write(sep_value.join(['Company name', 'City\n']))
         f.writelines(companies)
 
-with open('./out_csv/world-universities.csv', 'w') as f:
+with codecs.open('./out_csv/world-universities_out.csv', 'w', encoding='utf-8') as f:
     f.write(sep_value.join(['University name', 'City', 'URL\n']))
     f.writelines(universities)
 
