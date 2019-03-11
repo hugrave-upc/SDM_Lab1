@@ -17,10 +17,8 @@ call algo.pageRank.stream(
     {graph: "cypher"}
 )
 yield nodeId, score
-match (art:Article)
-where id(art) = nodeId
-with art, score order by score desc
-with $CommunityName as Community, collect ({Article: id(art), score: score})[0..$NumberTopArt] as TopArticles
+with nodeId, score order by score desc
+with $CommunityName as Community, collect ({Article: nodeId, score: score})[0..$NumberTopArt] as TopArticles
 unwind TopArticles as topArticle
 match (art:Article), (c:Community {name: $CommunityName}) where id(art) = topArticle['Article']
 merge (art)<-[:Top {score: topArticle['score']}]-(c)
