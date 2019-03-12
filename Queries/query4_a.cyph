@@ -15,4 +15,5 @@ order by journal, citation_year desc
 return journal, citation_year, 
 (case when citations_2years is null then 'not enough information' else citations_2years end) as citations_2years, 
 (case when articles_2years is null then 'not enough information' else articles_2years end) as articles_2years,
-(case when impact_factor is null then 'not enough information' else impact_factor end) as impact_factor;
+(case when impact_factor is null then 'not enough information' else impact_factor end) as impact_factor
+limit $limit;

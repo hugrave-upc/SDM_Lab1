@@ -1,4 +1,5 @@
 match (author:Author)-[:Writes]->(art:Article)<-[:Contains]-(e:Edition)<-[:Has_an]-(conf:Conference)
 with conf.name as Conference, author.name as Author, collect (distinct e) as numEditions
 where size(numEditions)>=4
-return Conference, collect({author:Author, editions_joined:numEditions}) as Communities;
+return Conference, collect({author:Author, editions_joined:numEditions}) as Communities
+limit $limit;

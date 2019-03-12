@@ -14,4 +14,5 @@ with journal, citation_year, [list in journal_statistics where list[0]<citation_
 with journal, citation_year, prior_years[size(prior_years)-2..size(prior_years)] as prior_2years
 with journal, citation_year,prior_2years[0][2]+prior_2years[1][2] as citations_2years, (prior_2years[0][1]+prior_2years[1][1]) as articles_2years, (1.0*prior_2years[0][2]+prior_2years[1][2])/(prior_2years[0][1]+prior_2years[1][1]) as impact_factor
 order by journal, citation_year desc
-return journal, citation_year, citations_2years, articles_2years,impact_factor;
+return journal, citation_year, citations_2years, articles_2years,impact_factor
+limit $limit;
