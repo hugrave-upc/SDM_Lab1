@@ -1,0 +1,18 @@
+---Option 1, including all possible combinations of journals and citing years (if there's not enough info, adding "not enough info") 
+
+match (journal:Journal)-[p:Publishes]->()-->(art:Article)
+with journal.journalID as journal, p.year as year, count (distinct art.title) as num_articles, collect (art) as articles
+match (art2:Article)<-[c:Cites]-(:Article)-[:Contains]-()-[:In]->(y:Year)
+where art2 in articles
+with journal, year as article_year, num_articles, y.number as citation_year, count (c) as num_citations
+order by article_year, citation_year
+with journal, citation_year, collect([ article_year,  num_articles, num_citations]) as journal_statistics
+order by citation_year
+with journal, citation_year, [list in journal_statistics where list[0]<citation_year] as prior_years
+with journal, citation_year, prior_years[size(prior_years)-2..size(prior_years)] as prior_2years
+with journal, citation_year,prior_2years[0][2]+prior_2years[1][2] as citations_2years, (prior_2years[0][1]+prior_2years[1][1]) as articles_2years, (1.0*prior_2years[0][2]+prior_2years[1][2])/(prior_2years[0][1]+prior_2years[1][1]) as impact_factor
+order by journal, citation_year desc
+return journal, citation_year, 
+(case when citations_2years is null then 'not enough information' else citations_2years end) as citations_2years, 
+(case when articles_2years is null then 'not enough information' else articles_2years end) as articles_2years,
+(case when impact_factor is null then 'not enough information' else impact_factor end) as impact_factor;

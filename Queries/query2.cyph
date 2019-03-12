@@ -1,0 +1,4 @@
+match (conf:Conference)-->(:Edition)-[:Contains]->(art:Article)<-[c:Cites]-()
+with conf, art, count(c) as citations
+order by conf, citations desc
+return conf.name as Conference, collect({article:art.title, citations:citations})[0..3] as listCitations;
