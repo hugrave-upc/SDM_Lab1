@@ -1,5 +1,3 @@
----Option 1, including all possible combinations of journals and citing years (if there's not enough info, adding "not enough info") 
-
 match (journal:Journal)-[p:Publishes]->()-->(art:Article)
 with journal.journalID as journal, p.year as year, count (distinct art.title) as num_articles, collect (art) as articles
 match (art2:Article)<-[c:Cites]-(:Article)-[:Contains]-()-[:In]->(y:Year)
