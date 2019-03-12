@@ -28,31 +28,29 @@ else
     limit=$2
 fi
 
-echo ":param limit $limit;" | cypher-shell
+tmp=tmp.cyph
+echo ":param limit $limit;" > "$tmp"
 
 case "$query" in
     1)
-    cat "$query1" | cypher-shell --format verbose
+    cat "$tmp" "$query1" | cypher-shell --format verbose
     verify_result "Execution of query1 failed"
     ;;
     2)
-    cat "$query2" | cypher-shell --format verbose
+    cat "$tmp" "$query2" | cypher-shell --format verbose
     verify_result "Execution of query2 failed"
     ;;
     3)
-    cat "$query3" | cypher-shell --format verbose
+    cat "$tmp" "$query3" | cypher-shell --format verbose
     verify_result "Execution of query3 failed"
     ;;
     4a)
-    cat "$query4a" | cypher-shell --format verbose
+    cat "$tmp" "$query4a" | cypher-shell --format verbose
     verify_result "Execution of query4a failed"
     ;;
     4b)
-    cat "$query4b" | cypher-shell --format verbose
+    cat "$tmp" "$query4b" | cypher-shell --format verbose
     verify_result "Execution of query4b failed"
-    ;;
-    exit)
-    STOP=True
     ;;
     *)
     echo "Unrecognized query."
