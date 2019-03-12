@@ -13,6 +13,14 @@ Whenever the database needs to be reset without generating the CSV files again, 
 In order to evolve the graph, several Cypher queries need to be executed.
 The program *neo4j_evolve.sh* can be executed. It executes through Python or *cypher-shell* all the queries needed.
 
+## Queries
+The program *neo4j_queries.sh* needs two arguments: the query number to be executed and the the limit of rows that the user wants to display.
+Example:
+```bash
+./neo4j_queries.sh 1 10
+```
+The example above runs the first query displaying only the first 10 lines.
+
 ## Reccomender
 In order to produce the right recommendations, several information need to be materialized.
 Through the *neo4j_reccommender.sh* it is possible to execute all the steps and then, through a user interface, request for the top authors.
