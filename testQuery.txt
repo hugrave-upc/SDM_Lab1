@@ -1,1 +1,0 @@
-match (a:Author) return a limit 25;

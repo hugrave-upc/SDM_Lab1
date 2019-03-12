@@ -1,5 +1,5 @@
 using periodic commit 10000
-load csv from 'file:///world-universities.csv' as line
+load csv from 'file:///world-universities_out.csv' as line
 fieldterminator '\t'
 with line[0] as uniHead, line[1] as cityHead, line[2] as urlHead
 limit 1
