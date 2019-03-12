@@ -23,30 +23,30 @@ verify_result "cypher-shell utility needs to be in the PATH."
 
 query=$1
 if [[ -z "$2" ]]; then
-    limit=$2
-else
     limit=1000
+else
+    limit=$2
 fi
 
 case "$query" in
     1)
-    cat "$query1" | cypher-shell | head -${limit}
+    cat "$query1" | cypher-shell --format verbose | head -${limit}
     verify_result "Execution of query1 failed"
     ;;
     2)
-    cat "$query2" | cypher-shell | head -${limit}
+    cat "$query2" | cypher-shell --format verbose | head -${limit}
     verify_result "Execution of query2 failed"
     ;;
     3)
-    cat "$query3" | cypher-shell | head -${limit}
+    cat "$query3" | cypher-shell --format verbose | head -${limit}
     verify_result "Execution of query3 failed"
     ;;
     4a)
-    cat "$query4a" | cypher-shell | head -${limit}
+    cat "$query4a" | cypher-shell --format verbose | head -${limit}
     verify_result "Execution of query4a failed"
     ;;
     4b)
-    cat "$query4b" | cypher-shell | head -${limit}
+    cat "$query4b" | cypher-shell --format verbose | head -${limit}
     verify_result "Execution of query4b failed"
     ;;
     exit)
