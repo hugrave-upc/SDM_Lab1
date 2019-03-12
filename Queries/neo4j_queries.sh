@@ -21,37 +21,38 @@ fi
 which cypher-shell > /dev/null
 verify_result "cypher-shell utility needs to be in the PATH."
 
-STOP=False
-while [[ "$STOP" == False ]]; do
-    header "Insert the query to be executed: (1,2,3,4a,4b) exit to stop"
-    read query
+query=$1
+if [[ -z "$2" ]]; then
+    limit=$2
+else
+    limit=1000
+fi
 
-    case "$query" in
-        1)
-        cat "$query1" | cypher-shell
-        verify_result "Execution of query1 failed"
-        ;;
-        2)
-        cat "$query2" | cypher-shell
-        verify_result "Execution of query2 failed"
-        ;;
-        3)
-        cat "$query3" | cypher-shell
-        verify_result "Execution of query3 failed"
-        ;;
-        4a)
-        cat "$query4a" | cypher-shell
-        verify_result "Execution of query4a failed"
-        ;;
-        4b)
-        cat "$query4b" | cypher-shell
-        verify_result "Execution of query4b failed"
-        ;;
-        exit)
-        STOP=True
-        ;;
-        *)
-        echo "Unrecognized query."
-        ;;
-    esac
-done
+case "$query" in
+    1)
+    cat "$query1" | cypher-shell | head -${limit}
+    verify_result "Execution of query1 failed"
+    ;;
+    2)
+    cat "$query2" | cypher-shell | head -${limit}
+    verify_result "Execution of query2 failed"
+    ;;
+    3)
+    cat "$query3" | cypher-shell | head -${limit}
+    verify_result "Execution of query3 failed"
+    ;;
+    4a)
+    cat "$query4a" | cypher-shell | head -${limit}
+    verify_result "Execution of query4a failed"
+    ;;
+    4b)
+    cat "$query4b" | cypher-shell | head -${limit}
+    verify_result "Execution of query4b failed"
+    ;;
+    exit)
+    STOP=True
+    ;;
+    *)
+    echo "Unrecognized query."
+    ;;
+esac
