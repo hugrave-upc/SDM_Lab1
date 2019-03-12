@@ -28,7 +28,7 @@ else
     limit=$2
 fi
 
-echo ":param limit $limit" | cypher-shell
+echo ":param limit $limit;" | cypher-shell
 
 case "$query" in
     1)
