@@ -3,7 +3,7 @@ load csv from 'file:///world-universities_out.csv' as line
 fieldterminator '\t'
 with line[0] as uniHead, line[1] as cityHead, line[2] as urlHead
 limit 1
-load csv with headers from 'file:///world-universities.csv' as line
+load csv with headers from 'file:///world-universities_out.csv' as line
 fieldterminator '\t'
 with line[uniHead] as university, line[urlHead] as url, line[cityHead] as city
 match (c:City {name: city})
