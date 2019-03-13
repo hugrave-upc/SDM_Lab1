@@ -85,5 +85,6 @@ mv "out_csv/world-universities_out.csv" "$NEO4J_IMPORT"
 
 header "Imported successfully! Wait few seconds for neo4j to restart."
 pkill -f neo4j
+sleep 2
 service neo4 start
 neo4j start
