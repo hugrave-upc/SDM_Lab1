@@ -15,10 +15,10 @@ add_aff_python="addAffiliations.py"
 add_indexes_script="add_indexes.cyph"
 aff_csv="out_csv/affiliations.csv"
 
-if [[ ! ( -f "$add_comp_script" || \
-            -f "$add_uni_script" || \
-            -f "$add_rev_script" || \
-            -f "$add_aff_script" || \
+if [[ ! ( -f "$add_comp_script" && \
+            -f "$add_uni_script" && \
+            -f "$add_rev_script" && \
+            -f "$add_aff_script" && \
             -f "$add_indexes_script" ) ]]
 then
     header "Cypher script files missing"

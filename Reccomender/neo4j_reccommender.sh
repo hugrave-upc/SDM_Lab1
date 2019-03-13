@@ -10,10 +10,10 @@ materialize_top_articles="materialize_top_articles.py"
 top_authors_no_mat="top_authors_no_mat.py"
 top_authors_with_mat="top_authors_with_mat.py"
 
-if [[ ! ( -f "$create_community_script" || \
-            -f "$related_community_script" || \
-            -f "$materialize_top_articles" || \
-            -f "$top_authors_no_mat" || \
+if [[ ! ( -f "$create_community_script" && \
+            -f "$related_community_script" && \
+            -f "$materialize_top_articles" && \
+            -f "$top_authors_no_mat" && \
             -f "$top_authors_with_mat" ) ]]
 then
     header "Missing files!"

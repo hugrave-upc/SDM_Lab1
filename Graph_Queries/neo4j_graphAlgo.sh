@@ -4,15 +4,15 @@
 
 
 
-create_coauthors="./TriangleCounting/create_coauthorhip.cyph"
+create_coauthors="./TriangleCounting/create_coauthorship.cyph"
 triangles="./TriangleCounting/influencing_authors.cyph"
 create_communities="./Louvan/createCommunities.cyph"
 abs_communities="./Louvan/absCommunities.cyph"
 rel_communities="./Louvan/relativeCommunities.cyph"
 
-if [[ ! ( -f "$create_coauthors" ||  -f "$triangles" || \
-            -f "$create_communities" ||  \
-            -f "$abs_communities" || -f "$rel_communities" ) ]]
+if [[ ! ( -f "$create_coauthors" &&  -f "$triangles" && \
+            -f "$create_communities" &&  \
+            -f "$abs_communities" && -f "$rel_communities" ) ]]
 then
     header "Cypher script files missing"
     exit 1
