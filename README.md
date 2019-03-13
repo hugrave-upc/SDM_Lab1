@@ -24,6 +24,13 @@ Example:
 ```
 The example above runs the first query displaying only the first 10 lines.
 
+## Graph algorithms
+The program *neo4j_graphAlgo.sh* builds the co-authorship relations, clusters the authors and run the queries.
+If the relations are already created, the **skip** parameter can be specified.
+```bash
+./neo4j_graphAlgo.sh [skip]
+```
+
 ## Reccomender
 In order to produce the right recommendations, several information need to be materialized.
 Through the *neo4j_reccommender.sh* it is possible to execute all the steps and then, through a user interface, request for the top authors.
