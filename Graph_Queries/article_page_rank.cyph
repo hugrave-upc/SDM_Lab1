@@ -1,5 +1,0 @@
-call algo.pageRank.stream('Article', 'Cites')
-yield nodeId, score
-match (art:Article) where id(art) = nodeId
-return art.title as article, score
-order by score desc;

@@ -1,2 +1,4 @@
 match (a:Author)-[r:Co_author]-(a2:Author)
-return a.name, count(distinct a2.community) as communities order by communities desc;
+return a.name, count(distinct a2.community) as communities
+order by communities desc
+limit 100;

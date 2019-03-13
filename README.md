@@ -6,8 +6,11 @@ Each one of them contains a shell script which automates the execution of the co
 ## Instantiating
 
 The main script for this section is the *convertingToCSV.py* file. However, since it is using the *neo4j-admin import* utility, it requires to reset the database every time. 
-In order to make the process smooth, we created a shell script to automate it. Running *neo4j_import.sh* the database is stopped, deleted, loaded and restarted. However, a problem is encountered all the times Neo4j is restarted. (TODO)
-Whenever the database needs to be reset without generating the CSV files again, the command *neo4j_import.sh --no-csv* can be run.
+In order to make the process smooth, we created a shell script to automate it. Running *import.sh* the database is stopped, deleted, loaded and restarted. However, a problem is encountered all the times Neo4j is restarted. (TODO)
+Whenever the database needs to be reset without generating the CSV files again, the following command can be executed:
+```bash
+import.sh --no-csv 
+```
 
 ## Evolving
 In order to evolve the graph, several Cypher queries need to be executed.
@@ -25,3 +28,6 @@ The example above runs the first query displaying only the first 10 lines.
 In order to produce the right recommendations, several information need to be materialized.
 Through the *neo4j_reccommender.sh* it is possible to execute all the steps and then, through a user interface, request for the top authors.
 However, since the program may be run several times, it is possible to pass the option *skip* to to avoid the materialization of the previous steps.
+```bash
+./neo4j_reccommender.sh [skip]
+```

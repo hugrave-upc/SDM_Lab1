@@ -1,0 +1,3 @@
+CALL algo.louvain('Author', 'Co_author',
+    {write:true, writeProperty:'community'})
+YIELD nodes, communityCount, iterations, loadMillis, computeMillis, writeMillis;

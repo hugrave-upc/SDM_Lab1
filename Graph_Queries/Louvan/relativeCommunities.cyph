@@ -2,4 +2,5 @@ match (a:Author)-[r:Co_author]-(a2:Author)
 with a, toFloat(count(distinct a2.community)) as communities, count(distinct a2) as coAuthors
 where coAuthors > 20
 return a.name, communities / coAuthors as normalizedComm
-order by normalizedComm desc;
+order by normalizedComm desc
+limit 100;
