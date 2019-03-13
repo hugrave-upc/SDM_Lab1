@@ -3,6 +3,12 @@
 This file wants to be an explanatory reference to the project repository. It is divided in folders containing the different sections of the laboratory.
 Each one of them contains a shell script which automates the execution of the corresponding section.
 
+## Requirements
+A list of python packages are required for the correct execution of the following scripts.
+```bash
+pip install Faker neo4j numpy unicodecsv
+```
+The code has been tested on **Python 2.7**.
 ## Instantiating
 
 The main script for this section is the *convertingToCSV.py* file. However, since it is using the *neo4j-admin import* utility, it requires to reset the database every time. 
