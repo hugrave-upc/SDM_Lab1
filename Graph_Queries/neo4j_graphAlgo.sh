@@ -31,10 +31,10 @@ if [[ -z "$1" || ! "$1" -eq "skip" ]]; then
 fi
 
 header "Get bridging authors through triangle counting..."
-cat "$triangles" | cypher-shell > /dev/null
+cat "$triangles" | cypher-shell --format verbose
 
 header "Get the number of communities for each author..."
-cat "$abs_communities" | cypher-shell > /dev/null
+cat "$abs_communities" | cypher-shell --format verbose
 
 header "Get the normalized number of communities.."
-cat "$rel_communities" | cypher-shell > /dev/null
+cat "$rel_communities" | cypher-shell --format verbose
