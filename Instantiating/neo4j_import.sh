@@ -36,6 +36,8 @@ neo4j stop
 verify_result "Failed to stop neo4j server"
 service neo4j stop
 verify_result "Failed to stop neo4j server"
+pkill -f neo4j
+verify_result "Failed to stop neo4j server"
 
 ## Running the CSV generation script
 if [[ "$prepare_csv" -eq "$TRUE" ]]; then
@@ -83,4 +85,6 @@ mv "out_csv/companies.csv" "$NEO4J_IMPORT"
 mv "out_csv/reviews_summary.csv" "$NEO4J_IMPORT"
 mv "out_csv/world-universities_out.csv" "$NEO4J_IMPORT"
 
-header "Imported successfully. Kill manually the last neo4j process and start it again."
+header "Imported successfully! Wait few seconds for neo4j to restart."
+service neo4 start
+neo4j start
