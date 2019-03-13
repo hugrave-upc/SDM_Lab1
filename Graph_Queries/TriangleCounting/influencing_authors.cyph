@@ -5,7 +5,7 @@ where id(auth) = nodeId
 with auth, triangles, coefficient, count(art) as articles
 match (:Author)-[r:Co_author]-(auth)
 with auth, triangles, coefficient, articles, count(r) as coAuthors
-where coAuthors > 10 and articles > 5
+where coAuthors > 10 or articles > 5
 return auth.name, triangles, coefficient, articles, coAuthors
 order by coefficient, triangles, articles desc, coAuthors desc
 limit 100;
