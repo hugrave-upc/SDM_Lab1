@@ -7,5 +7,5 @@ match (:Author)-[r:Co_author]-(auth)
 with auth, triangles, coefficient, articles, count(r) as coAuthors
 where coAuthors > 10 and articles > 5
 return auth.name, triangles, coefficient, articles, coAuthors
-order by coefficient desc, triangles, articles desc, coAuthors desc
+order by coefficient, triangles, articles desc, coAuthors desc
 limit 100;
